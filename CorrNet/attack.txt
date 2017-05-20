@@ -1,0 +1,5 @@
+dos,back,land,neptune,pod,smurf,teardrop,mailbomb,processtable,udpstorm,apache2,worm
+probe,satan,ipsweep,nmap,portsweep,mscan,saint
+r2l,guess_passwd,ftp_write,imap,phf,multihop,warezclient,warezmaster,xlock,xsnoop,snmpguess,snmpgetattack,httptunnel,sendmail,named
+u2r,buffer_overflow,loadmodule,rootkit,perl,sqlattack,xterm,ps,spy
+normal
