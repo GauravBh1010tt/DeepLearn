@@ -3,7 +3,7 @@
 
 This is an implementation of Correlational Neural Network (CorrNet) described in the following paper : Sarath Chandar, Mitesh M Khapra, Hugo Larochelle, Balaraman Ravindran. [Correlational Neural Networks](https://arxiv.org/pdf/1504.07225.pdf). 
 
-For detailed description please refer to my blog post [COMMON REPRESENTATION LEARNING USING DEEP CORRNET](https://deeplearn.school.blog/)
+### For detailed description please refer to my blog post [COMMON REPRESENTATION LEARNING USING DEEP CORRNET](https://deeplearn.school.blog/).
 ## Dependencies
 This implementation uses Python, Keras with Theano backend, and Scikit Learn. 
 
