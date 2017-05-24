@@ -33,10 +33,10 @@ Reconstruction of one view given the other
 ```python
 >>> reconstruct_from_left(model,left_view[6:7])
 ```
-![Left2right reconstruction](https://cloud.githubusercontent.com/assets/22491381/26366296/2a07d9e6-4008-11e7-9d17-f3708c172f1d.PNG)
+![Left2right reconstruction](https://i0.wp.com/deeplearnschool.files.wordpress.com/2017/05/git1.png?ssl=1&w=450)
 
 ```python
 >>> reconstruct_from_right(model,right_view[6:7])
 ```
-![Right2left reconstruction](https://cloud.githubusercontent.com/assets/22491381/26366297/2a0c6a6a-4008-11e7-8b3e-a55d2bb29988.PNG)
+![Right2left reconstruction](https://i0.wp.com/deeplearnschool.files.wordpress.com/2017/05/git2.png?ssl=1&w=450)
 
