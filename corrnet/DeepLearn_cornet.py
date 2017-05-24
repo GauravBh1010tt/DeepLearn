@@ -27,6 +27,8 @@ hdim = 50
 h_loss = 50
 hdim_deep = 500
 hdim_deep2 = 300
+nb_epoch = 40
+batch_size = 100
 dimx = 392
 dimy = 392
 lamda = 0.02
@@ -215,8 +217,14 @@ def transfer(model):
 		acc += ta
     print acc/5
 
-def buildModel(loss_type):
-#if True:
+def prepare_data():
+    data_l = np.load('data_l.npy')
+    data_r = np.load('data_r.npy')
+    label = np.load('data_label.npy')
+    X_train_l, X_test_l, X_train_r, X_test_r,y_train,y_test = split(data_l,data_r,label,ratio=0.0)
+    return X_train_l, X_train_r
+
+def buildModel(loss_type,lamda):
 
     inpx = Input(shape=(dimx,))
     inpy = Input(shape=(dimy,))
@@ -265,46 +273,49 @@ def buildModel(loss_type):
 
     return model, branchModel
 
-def trainModel(model,loss_type):
-#if True:
+def trainModel(model,data_left,data_right,loss_type,nb_epoch,batch_size):
+
+    X_train_l = data_left
+    X_train_r = data_right
+    #y_train = np_utils.to_categorical(y_train, nb_classes)
+    #y_test = np_utils.to_categorical(y_test, nb_classes)
     
     data_l = np.load('data_l.npy')
     data_r = np.load('data_r.npy')
     label = np.load('data_label.npy')
     X_train_l, X_test_l, X_train_r, X_test_r,y_train,y_test = split(data_l,data_r,label,ratio=0.01)
     
-    #y_train = np_utils.to_categorical(y_train, nb_classes)
-    #y_test = np_utils.to_categorical(y_test, nb_classes)
-    
     print 'data split'
     if loss_type == 1:
         print 'L_Type: l1+l2+l3-L4   h_dim:',hdim,'  lamda:',lamda
-        model.fit([X_train_l,X_train_r], [X_train_l,X_train_l,X_train_l,X_train_r,X_train_r,X_train_r,np.zeros((X_train_l.shape[0],h_loss))],
-                  nb_epoch=40,
-                  batch_size=100,verbose=0)
+        model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_l,X_train_r,X_train_r,np.zeros((X_train_l.shape[0],h_loss))],
+                  nb_epoch=nb_epoch,
+                  batch_size=batch_size,verbose=0)
     elif loss_type == 2:
         print 'L_Type: l2+l3-L4   h_dim:',hdim,'   hdim_deep',hdim_deep,'  lamda:',lamda
-        model.fit([X_train_l,X_train_r], [X_train_l,X_train_l,X_train_r,X_train_r,np.zeros((X_train_l.shape[0],h_loss))],
-              nb_epoch=40,
-              batch_size=100,verbose=0)
+        model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_r,np.zeros((X_train_l.shape[0],h_loss))],
+              nb_epoch=nb_epoch,
+              batch_size=batch_size,verbose=0)
     elif loss_type == 3:
         print 'L_Type: l1+l2+l3   h_dim:',hdim,'  lamda:',lamda
-        model.fit([X_train_l,X_train_r], [X_train_l,X_train_l,X_train_l,X_train_r,X_train_r,X_train_r],
-              nb_epoch=40,
-              batch_size=100,verbose=0)
+        model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_l,X_train_r,X_train_r],
+              nb_epoch=nb_epoch,
+              batch_size=batch_size,verbose=0)
     elif loss_type == 4:
         print 'L_Type: l2+l3   h_dim:',hdim,'  lamda:',lamda
-        model.fit([X_train_l,X_train_r], [X_train_l,X_train_l,X_train_r,X_train_r],
-              nb_epoch=40,
-              batch_size=100,verbose=0)
+        model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_r],
+              nb_epoch=nb_epoch,
+              batch_size=batch_size,verbose=0)
     #score = m.evaluate([X_test_l,X_test_r], [X_test_l,X_test_l,X_test_r,X_test_r,np.zeros((X_test_l.shape[0],hdim))],
     #                  batch_size=100)
     #print score
 
-def testModel(model):
-    transfer(model)
-    sum_corr(model)
+def testModel(b_model):
+    transfer(b_model)
+    sum_corr(b_model)
 
-model,branchModel = buildModel(loss_type)
-trainModel(model,loss_type)
+left_view, right_view = prepare_data()
+model,branchModel = buildModel(loss_type=loss_type,lamda=lamda)
+trainModel(model=model, data_left=left_view, data_right = right_view, 
+           loss_type=loss_type,nb_epoch=nb_epoch,batch_size=batch_size)
 testModel(branchModel)
