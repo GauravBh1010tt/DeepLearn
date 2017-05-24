@@ -10,7 +10,7 @@ This is an implementation of Correlational Neural Network (CorrNet) described in
 This implementation uses Python, Keras with Theano backend, and Scikit Learn. 
 
 ## Dataset 
-Please extract the contents from training_and_testing_data_corrnet.rar file and keep it in the same folder as the DeepLearn_corrnet.py script.
+Please extract the contents from **training_and_testing_data_corrnet.rar** file and keep it in the same folder as the DeepLearn_corrnet.py script.
 
 ## Usage:
 Training and testing the model on MNIST dataset.
