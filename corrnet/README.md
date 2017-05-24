@@ -16,18 +16,9 @@ Please extract the contents from training_and_testing_data_corrnet.rar file and 
 Training and testing the model on MNIST dataset.
 
 ```python
->>> model,branchModel = buildModel(loss_type = 2)
->>> trainModel(model, loss_type = 2)
- 
-Training with following architecture....
-L_Type: l2+l3-L4
-h_dim: 50
-hdim_deep: 500
-hdim_deep2: 300
-lamda: 0.02
- 
-Training done....
- 
+>>> left_view, right_view = prepare_data()
+>>> model,branchModel = buildModel(loss_type)
+>>> trainModel(model,left_view,right_view,loss_type=2,nb_epoch=40,batch_size=100)
 >>> testModel(branchModel)
  
 view1 to view2 transfer accuracy
@@ -40,12 +31,12 @@ test sum-correlation
 ```
 Reconstruction of one view given the other
 ```python
->>> reconstruct_from_left(model,X_train_l[6:7])
+>>> reconstruct_from_left(model,left_view[6:7])
 ```
 ![Left2right reconstruction](https://cloud.githubusercontent.com/assets/22491381/26366296/2a07d9e6-4008-11e7-9d17-f3708c172f1d.PNG)
 
 ```python
->>> reconstruct_from_right(model,X_train_r[6:7])
+>>> reconstruct_from_right(model,right_view[6:7])
 ```
 ![Right2left reconstruction](https://cloud.githubusercontent.com/assets/22491381/26366297/2a0c6a6a-4008-11e7-8b3e-a55d2bb29988.PNG)
 
