@@ -16,7 +16,6 @@ Please extract the contents from **training_and_testing_data_corrnet.rar** file 
 Training and testing the model on MNIST dataset.
 
 ```python
->>> from DeepLearn_corrnet import *
 >>> left_view, right_view = prepare_data()
 >>> model,branchModel = buildModel(loss_type)
 >>> trainModel(model,left_view,right_view,loss_type=2,nb_epoch=40,batch_size=100)
