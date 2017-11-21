@@ -67,15 +67,6 @@ def data_to_indexed(data, entities, relations):
             entity_to_index[data[i][2]], float(data[i][3])) for i in range(len(data))]
     return indexed_data
 
-def fill_feed_dict(batches, labels, train_both, batch_placeholders, label_placeholders, corrupt_placeholder):
-    feed_dict = {corrupt_placeholder: [train_both and np.random.random()>0.5]}
-    for i in range(len(batch_placeholders)):
-        feed_dict[batch_placeholders[i]] = batches[i]
-    for i in range(len(label_placeholders)):
-        feed_dict[label_placeholders[i]] = labels[i]
-    return feed_dict
-
-
 #dataset is in the form (e1, R, e2, label)
 def data_to_relation_sets(data_batch, num_relations):
     batches = [[] for i in range(num_relations)]
