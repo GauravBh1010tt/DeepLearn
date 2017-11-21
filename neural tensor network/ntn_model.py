@@ -2,7 +2,6 @@
 
 import glob
 import ntn_input
-#from lib.attention import *
 from ntn import *
 import random
 import keras
