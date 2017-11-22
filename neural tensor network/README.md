@@ -1,7 +1,7 @@
 
 This is a implementation of Neural Tensor Network as described in [Reasoning With Neural Tensor Networks
 for Knowledge Base Completion](http://cs.stanford.edu/~danqi/papers/nips2013.pdf). 
-#### For detailed description please refer to my blog post [NEURAL TENSOR NETWORK: EXPLORING RELATIONS AMONG TEXT ENTITIES](https://deeplearn.school.blog/).
+#### For detailed description please refer to my blog post [NEURAL TENSOR NETWORK: EXPLORING RELATIONS AMONG TEXT ENTITIES](http://deeplearn-ai.com/2017/11/21/neural-tensor-network-exploring-relations-among-text-entities/).
 
 Neural Tensor Layer is defined as 
 
