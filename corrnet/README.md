@@ -5,7 +5,7 @@ This is an implementation of Correlational Neural Network (CorrNet) described in
 
 ![CorrNet](https://cloud.githubusercontent.com/assets/22491381/26366765/e31809d2-4009-11e7-80e2-d79cfd04a418.PNG)
 
-### For detailed description please refer to my blog post [COMMON REPRESENTATION LEARNING USING DEEP CORRNET](https://deeplearn.school.blog/).
+### For detailed description please refer to my blog post [COMMON REPRESENTATION LEARNING USING DEEP CORRNET](http://deeplearn-ai.com/2017/05/24/common-representation-learning-using-deep-corrnet/).
 ## Dependencies
 This implementation uses Python 2.7, Keras (2.0 or above) with Theano backend, and Scikit Learn. 
 
