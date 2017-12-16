@@ -22,7 +22,7 @@ Download the data files for wordbase and freebase dataset - [Data](https://drive
 >>> negative_samples = 1
 >>> e1,e2,labels_train,t1,t2,labels_dev,num_relations = prepare_data(negative_samples)
 >>> e, t, labels_train, labels_dev = aggregate(e1,e2,labels_train,t1,t2,labels_dev,num_relations)
->>> model = build_model(num_relations, k) # k = number of slices
+>>> model = build_model(num_relations, tensor_slices) # tensor_slices = number of tensor parameters
 >>> model.fit(e,labels_train,
                  nb_epoch=10,
                  batch_size=100,verbose=2)
