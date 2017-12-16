@@ -19,7 +19,7 @@ Download the data files for wordbase and freebase dataset - [Data](https://drive
 >>> import ntn_input
 >>> from ntn import *
 >>> from ntn_model import *
->>> negative samples = 1
+>>> negative_samples = 1
 >>> e1,e2,labels_train,t1,t2,labels_dev,num_relations = prepare_data(negative_samples)
 >>> e, t, labels_train, labels_dev = aggregate(e1,e2,labels_train,t1,t2,labels_dev,num_relations)
 >>> model = build_model(num_relations, k) # k = number of slices
