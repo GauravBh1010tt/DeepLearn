@@ -11,7 +11,7 @@ Neural Tensor Layer is defined as
 This implementation uses Python 2.7, Keras (2.0 or above) with Theano backend, and Scikit Learn. 
 
 ### Data Used
-Download the data files for wordbase and freebase dataset - [Data](https://drive.google.com/open?id=15JZNzH9J7cN1Qil87z7bhDYhmKa8TYvt). Extract the files and keep them in the same folder with the files in this repository.
+Download the data files for wordbase and freebase dataset - [Data](https://drive.google.com/open?id=15JZNzH9J7cN1Qil87z7bhDYhmKa8TYvt). Extract the files and keep them in the same folder with the files in this repository (inside the data folder).
 
 ### Code Usage
 
