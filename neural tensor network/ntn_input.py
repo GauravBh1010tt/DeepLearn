@@ -1,4 +1,3 @@
-import params
 import scipy.io as sio
 import numpy as np
 import glob
@@ -19,6 +18,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from keras import initializers, regularizers, constraints 
 from keras.layers import Input, Merge,Lambda, Embedding, Bidirectional, LSTM, Dense, RepeatVector, Dropout
 
+embedding_size = 100
 
 data_number = 0 #0 - Wordnet, 1 - Freebase
 if data_number == 0: data_name = 'Wordnet'
@@ -63,7 +63,7 @@ def load_embeds(file_path):
     words = mat_contents['words']
     we = mat_contents['We']
     tree = mat_contents['tree']
-    word_vecs = [[we[j][i] for j in range(params.embedding_size)] for i in range(len(words[0]))]
+    word_vecs = [[we[j][i] for j in range(embedding_size)] for i in range(len(words[0]))]
     entity_words = [map(int, tree[i][0][0][0][0][0]) for i in range(len(tree))]
     return (word_vecs,entity_words)
 
