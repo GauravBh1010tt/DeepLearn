@@ -1,6 +1,6 @@
 # DeepLearn
 
-Welcome to DeepLearn. This repository contains implementation of following research papers on NLP, CV, ML, and deep learning. You can find detailed description of most of these papers on my blog - [Deeplearn](http://deeplearn-ai.com/)
+Welcome to DeepLearn. This repository contains implementation of following research papers on NLP, CV, ML, and deep learning. You can find detailed description of most of these papers on my blog - [Deeplearn](http://deeplearn-ai.com/deeplearn/)
 
 [1] [*Correlation Neural Networks*](https://arxiv.org/pdf/1504.07225.pdf), S. Chander, et al. In Neural Computation, 2015. [blog-post](https://deeplearn-ai.com/2017/05/24/common-representation-learning-using-deep-corrnet/) || [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/corrnet)
 
