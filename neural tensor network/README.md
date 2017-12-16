@@ -25,5 +25,5 @@ Download the data files for wordbase and freebase dataset - [Data](https://drive
 >>> model = build_model(num_relations, tensor_slices) # tensor_slices = number of tensor parameters
 >>> model.fit(e,labels_train,
                  nb_epoch=10,
-                 batch_size=100,verbose=2)
+                 batch_size=100,verbose=1)
 ```
