@@ -5,6 +5,10 @@
 # Dependencies
 #### The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
 
+```python
+$ pip install -r requirements.txt
+```
+
 # Usage
 The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
 
