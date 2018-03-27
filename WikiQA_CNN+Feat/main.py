@@ -1,8 +1,11 @@
 import numpy as np
 
 from dl_text import *
+import model
 import wiki_utils as wk
 from dl_text.metrics import eval_metric
+
+glove_fname = 'D:/workspace/Trec_QA-master/data/Glove/glove.6B.50d.txt'
 
 ################### DEFINING MODEL AND PREDICTION FILE ###################
 
@@ -22,7 +25,7 @@ filter_length = (50,4)
 depth = 1
 nb_epoch = 3
     
-ques, ans, label_train, train_len, test_len, wordVec_model, res_fname, pred_fname, feat_train, feat_test = wk.load_wiki(model_name)
+ques, ans, label_train, train_len, test_len, wordVec_model, res_fname, pred_fname, feat_train, feat_test = wk.load_wiki(model_name, glove_fname)
 data_l , data_r, embedding_matrix = dl.process_data(ques, ans,
                                                  wordVec_model,dimx=dimx,
                                                  dimy=dimy,vocab_size=vocab_size,
