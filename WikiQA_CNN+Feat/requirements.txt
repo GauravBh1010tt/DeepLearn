@@ -1,0 +1,21 @@
+# Library dependencies for the python code.  You need to install these with
+# `pip install -r requirements.txt` before you can run this.
+
+#### ESSENTIAL LIBRARIES FOR MAIN FUNCTIONALITY ####
+
+numpy==1.11.0
+matplotlib
+pandas
+scikit-learn
+scipy
+h5py
+keras==2.1.5
+theano==0.9.0
+StandardScaler
+nltk
+textstat
+gensim
+stop_words
+tqdm
+
+
