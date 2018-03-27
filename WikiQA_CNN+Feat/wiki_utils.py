@@ -6,10 +6,10 @@ from keras.utils.np_utils import to_categorical
 
 ################### LOADING, CLEANING AND PROCESSING DATASET ###################
 def load_wiki(model_name, glove_fname):
-    data_train = open('../../data/WikiQA-train.txt').readlines()
-    data_test= open('../../data/WikiQA-test.txt').readlines()
-    data_dev = open('../../data/WikiQA-dev.txt').readlines()
-    res_fname = '../../data/new_ref'
+    data_train = open('data/WikiQA-train.txt').readlines()
+    data_test= open('data/WikiQA-test.txt').readlines()
+    data_dev = open('data/WikiQA-dev.txt').readlines()
+    res_fname = 'data/new_ref'
     pred_fname = 'pred_%s'%model_name
 
     data_train = [line.split('\t') for line in data_train]
@@ -51,9 +51,9 @@ def load_wiki(model_name, glove_fname):
     
     wordVec_model = dl.loadGloveModel(glove_fname)
     
-    feat_LS = np.load('../../Extracted_Features/lex.npy')
-    feat_read = np.load('../../Extracted_Features/read.npy')
-    feat_numeric = np.load('../../Extracted_Features/numeric.npy')
+    feat_LS = np.load('Extracted_Features/lex.npy')
+    feat_read = np.load('Extracted_Features/read.npy')
+    feat_numeric = np.load('Extracted_Features/numeric.npy')
     
     feat = np.hstack((feat_LS, feat_read, feat_numeric))
     
