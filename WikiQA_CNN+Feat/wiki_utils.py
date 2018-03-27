@@ -5,11 +5,10 @@ from sklearn.preprocessing import StandardScaler
 from keras.utils.np_utils import to_categorical
 
 ################### LOADING, CLEANING AND PROCESSING DATASET ###################
-def load_wiki(model_name):
+def load_wiki(model_name, glove_fname):
     data_train = open('../../data/WikiQA-train.txt').readlines()
     data_test= open('../../data/WikiQA-test.txt').readlines()
     data_dev = open('../../data/WikiQA-dev.txt').readlines()
-    glove_fname = 'D:/workspace/Trec_QA-master/data/Glove/glove.6B.50d.txt'
     res_fname = '../../data/new_ref'
     pred_fname = 'pred_%s'%model_name
 
