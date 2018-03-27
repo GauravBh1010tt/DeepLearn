@@ -1,5 +1,7 @@
 # WikiQA - CNN+Feat
-### This is the implementation of [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237). The deep model used is CNN with external features: ![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/WikiQA_CNN%2BFeat/im1.JPG)
+### This is the implementation of [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237). The deep model used is CNN with external features: 
+
+![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/WikiQA_CNN%2BFeat/im1.JPG)
 
 # Dependencies
 #### The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
