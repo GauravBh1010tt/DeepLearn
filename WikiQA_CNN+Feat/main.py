@@ -7,7 +7,7 @@ from dl_text.metrics import eval_metric
 
 glove_fname = 'D:/workspace/Trec_QA-master/data/Glove/glove.6B.50d.txt'
 
-################### DEFINING MODEL AND PREDICTION FILE ###################
+################### DEFINING MODEL ###################
 
 lrmodel = model.cnn
 model_name = lrmodel.func_name
