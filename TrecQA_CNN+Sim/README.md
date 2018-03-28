@@ -1,6 +1,6 @@
-# WikiQA - CNN+Feat
-### This is the implementation of [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237). The deep model used is CNN with external features:
-![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/WikiQA_CNN%2BFeat/im1.JPG)
+# TrecQA - CNN+Sim
+### This is the implementation of [Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf). The deep model used is CNN with similarity matrics:
+![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/TrecQA_CNN%2BSim/cnn_sim.JPG)
 
 # Dependencies
 #### The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
