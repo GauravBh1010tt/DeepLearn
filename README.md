@@ -6,7 +6,7 @@ Welcome to DeepLearn. This repository contains implementation of following resea
 
 [2] [*Reasoning With Neural Tensor Networks for Knowledge Base Completion*](https://nlp.stanford.edu/pubs/SocherChenManningNg_NIPS2013.pdf). NLP, ML. [blog-post](https://deeplearn-ai.com/2017/11/21/neural-tensor-network-exploring-relations-among-text-entities/) || [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/neural%20tensor%20network)
 
-[3] [*Common Representation Learning Using Step-based Correlation Multi-Modal CNN*](https://arxiv.org/abs/1711.00003).CV, transfer learning, representation learninng. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/CorrMCNN)
+[3] [*Common Representation Learning Using Step-based Correlation Multi-Modal CNN*](https://arxiv.org/abs/1711.00003). CV, transfer learning, representation learninng. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/CorrMCNN)
 
 [4] [Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf). NLP, deep learning, CQA. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/TrecQA_CNN%2BSim)
 
