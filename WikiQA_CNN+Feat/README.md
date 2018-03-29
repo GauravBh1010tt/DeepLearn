@@ -13,7 +13,8 @@ $ pip install -r requirements.txt
 The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
 
 ```python
->>> from dl_text import model, dl
+>>> from dl_text import dl
+>>> import model
 >>> import wiki_utils as wk
 >>> from dl_text.metrics import eval_metric
 
