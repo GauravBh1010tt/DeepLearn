@@ -9,8 +9,6 @@ from keras.layers import Input, Embedding, GlobalAveragePooling2D, GlobalMaxPool
 
 from dl_text.dl import word2vec_embedding_layer
 
-######################## MODEL USING BASIC CNN ########################
-
 def cnn_sim(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, 
         embedding_dim = 50,filter_length = (50,4), vocab_size = 8000, depth = 1):
 
