@@ -7,10 +7,10 @@ from keras.utils.np_utils import to_categorical
 ################### LOADING, CLEANING AND PROCESSING DATASET ###################
 def load_trec(model_name, glove_fname):
     
-    train_file = open('../../data/trec/train-filtered.tsv')
-    test_file= open('../../data/trec/test-filtered.tsv')
-    dev_file = open('../../data/trec/dev-filtered.tsv')
-    res_fname = '../../data/trec/test.ref'
+    train_file = open('data/train-filtered.tsv')
+    test_file= open('data/test-filtered.tsv')
+    dev_file = open('data/dev-filtered.tsv')
+    res_fname = 'data/test.ref'
     pred_fname = 'pred_%s'%model_name
 
     train_header = train_file.readline().split('\t')
@@ -57,9 +57,9 @@ def load_trec(model_name, glove_fname):
     
     wordVec_model = dl.loadGloveModel(glove_fname)
     
-    feat_LS = np.load('../../Extracted_Features/feat_trec/lex.npy')
-    feat_read = np.load('../../Extracted_Features/feat_trec/read.npy')
-    feat_numeric = np.load('../../Extracted_Features/feat_trec/numeric.npy')
+    feat_LS = np.load('Extracted_Features/lex.npy')
+    feat_read = np.load('Extracted_Features/read.npy')
+    feat_numeric = np.load('Extracted_Features/numeric.npy')
     
     feat = np.hstack((feat_LS, feat_read, feat_numeric))
     
