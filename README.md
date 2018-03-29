@@ -8,9 +8,15 @@ Welcome to DeepLearn. This repository contains implementation of following resea
 
 [3] [*Common Representation Learning Using Step-based Correlation Multi-Modal CNN*](https://arxiv.org/abs/1711.00003). G. Bhatt, et al. In ACPR, 2017. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/CorrMCNN)
 
-[4] [*Language Identification and Disambiguation in Indian Mixed-Script*](https://link.springer.com/chapter/10.1007%2F978-3-319-28034-9_14) G. Bhatt, et al. In ICDCIT-2016. [blog-post](https://deeplearn.school.blog/2016/12/17/auto-correction-for-transliterated-queries/) || [code](https://github.com/GauravBh1010tt/Auto-correction-for-transliterated-queries)
+[4] [Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf)
 
-[5] [*Construction of a Semi-Automated model for FAQ Retrieval via Short Message Service*](https://dl.acm.org/citation.cfm?doid=2838706.2838717) G. Bhatt, et al. In FIRE-2015. [code](https://github.com/GauravBh1010tt/Auto-correction-for-transliterated-queries/tree/master/bi-gram%20markov%20model)
+[5] [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237)
+
+[6] [External features for community question answering](http://maroo.cs.umass.edu/getpdf.php?id=1281)
+
+[7] [*Language Identification and Disambiguation in Indian Mixed-Script*](https://link.springer.com/chapter/10.1007%2F978-3-319-28034-9_14) G. Bhatt, et al. In ICDCIT-2016. [blog-post](https://deeplearn.school.blog/2016/12/17/auto-correction-for-transliterated-queries/) || [code](https://github.com/GauravBh1010tt/Auto-correction-for-transliterated-queries)
+
+[8] [*Construction of a Semi-Automated model for FAQ Retrieval via Short Message Service*](https://dl.acm.org/citation.cfm?doid=2838706.2838717) G. Bhatt, et al. In FIRE-2015. [code](https://github.com/GauravBh1010tt/Auto-correction-for-transliterated-queries/tree/master/bi-gram%20markov%20model)
 
 ### Dependencies:
 Install the following packages for using the project:
