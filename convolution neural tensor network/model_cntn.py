@@ -19,7 +19,7 @@ from dl_layers.layers import Similarity, ntn
 def cntn(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, num_slices = 3,
         embedding_dim = 50,filter_length = (50,4), vocab_size = 8000, depth = 1):
 
-    print 'Model Uses CNN with Sim......'
+    print 'Model Uses CNTN ......'
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')
