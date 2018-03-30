@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# --**deeplean-ai.com**--
+# --**dl-lab**--
 
 import numpy as np
 from keras import backend as K
