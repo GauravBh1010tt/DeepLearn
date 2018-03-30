@@ -42,7 +42,7 @@ I have extracted the external features and stores in the ```Extracted_Features``
 
 ```python
 >>> ques, ans, label_train, train_len, test_len, wordVec_model, \
-        res_fname, pred_fname, feat_train, feat_test = trec.load_wiki(model_name, glove_fname)
+        res_fname, pred_fname, feat_train, feat_test = trec.load_trec(model_name, glove_fname)
             
 >>> data_l , data_r, embedding_matrix = dl.process_data(ques, ans,
                                                  wordVec_model,dimx=dimx,
