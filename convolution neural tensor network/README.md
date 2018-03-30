@@ -13,8 +13,8 @@ $ pip install -r requirements.txt
 The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
 
 ```python
->>> from dl_text dl
->>> import model_sim as model
+>>> from dl_text import dl
+>>> import model_cntn as model
 >>> import trec_utils as trec
 >>> from dl_text.metrics import eval_metric
 
@@ -22,14 +22,13 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 
 ############################ DEFINING MODEL ############################
 
->>> lrmodel = model.cnn_sim  # CNN with sim - model.cnn_sim; CNN with sim and Feat - model.cnn_sim_ft
+>>> lrmodel = model.cntn 
 >>> model_name = lrmodel.func_name
 
 ################### DEFINING HYPERPARAMETERS ###################
 
->>> dimx = 60 # number of words in question
->>> dimy = 60 # number of words in answer
->>> dimft = 44 # number of external features used
+>>> dimx = 50 # number of words in question
+>>> dimy = 50 # number of words in answer
 >>> batch_size = 50
 >>> vocab_size = 8000
 >>> embedding_dim = 50
@@ -37,12 +36,13 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 >>> filter_length = (50,4)
 >>> depth = 1
 >>> nb_epoch = 3
+>>> num_tensor_slices = 4
 ```
-I have extracted the external features and stores in the ```Extracted_Features``` folder. You can compute these features using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
+For evaluating the performance of the model I will use TrecQA dataset. The reason I am using this dataset is the dataset mentioned in the paper is not publically available. This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
 
 ```python
 >>> ques, ans, label_train, train_len, test_len, wordVec_model, \
-        res_fname, pred_fname, feat_train, feat_test = trec.load_wiki(model_name, glove_fname)
+        res_fname, pred_fname, feat_train, feat_test = trec.load_trec(model_name, glove_fname)
             
 >>> data_l , data_r, embedding_matrix = dl.process_data(ques, ans,
                                                  wordVec_model,dimx=dimx,
@@ -53,30 +53,15 @@ I have extracted the external features and stores in the ```Extracted_Features``
                                                                            train_len,test_len)
 ```
 
-The **CNN model with similarity** can be trained as:
+The **CNN model with tensor parameters** can be trained as:
 ```python
 >>> lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, nb_filter = nb_filter, 
-                      embedding_dim = embedding_dim, filter_length = filter_length,
-                      vocab_size = vocab_size, depth = depth)
+                      num_slices = num_tensor_slices, embedding_dim = embedding_dim, 
+                      filter_length = filter_length, vocab_size = vocab_size, depth = depth)
     
 >>> lrmodel.fit([X_train_l, X_train_r],
                 label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
 >>> map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname)
 >>> print 'MAP : ',map_val,' MRR : ',mrr_val
-MAP :  0.653286925881  MRR :  71.4599673203
-```
-The results are comparable to the results mentioned in the paper. For **CNN model with similarity and external features**, use 
-
-
-```python
->>> lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, dimft=dimft, nb_filter = nb_filter, 
-                      embedding_dim = embedding_dim, filter_length = filter_length,
-                      vocab_size = vocab_size, depth = depth)
->>> lrmodel.fit([X_train_l,X_train_r,feat_train],
-                    label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
->>> map_val, mrr_val = eval_metric(lrmodel, X_test_l,
-                    X_test_r, res_fname, pred_fname, feat_test=feat_test)
-    
->>> print 'MAP : ',map_val,' MRR : ',mrr_val
-MAP :  0.738521075097  MRR :  81.7787114846
+MAP :  0.643286925881  MRR :  70.4599673203
 ```
