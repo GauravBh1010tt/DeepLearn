@@ -8,6 +8,7 @@ from keras.layers.core import Dense, Reshape, Permute
 from keras.layers import Input, Embedding, GlobalAveragePooling2D, GlobalMaxPooling2D,GlobalMaxPooling1D, Bidirectional, Dense, Dropout, Merge, Multiply, Conv1D, Lambda, Flatten, LSTM, TimeDistributed, Conv2D, MaxPooling2D, UpSampling2D
 
 from dl_text.dl import word2vec_embedding_layer
+from dl_layers.layers import Similarity
 
 def cnn_sim(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, 
         embedding_dim = 50,filter_length = (50,4), vocab_size = 8000, depth = 1):
@@ -143,28 +144,3 @@ def cnn_sim_ft(embedding_matrix, dimx=50, dimy=50, dimft=44, nb_filter = 120,
     model.compile( loss='categorical_crossentropy',optimizer='adam')
     
     return model
-
-class Similarity(Layer):
-    
-    def __init__(self, v_dim, kernel_regularizer=None, **kwargs):
-        self.v_dim = v_dim
-        self.kernel_regularizer = regularizers.get(kernel_regularizer)
-        super(Similarity, self).__init__(**kwargs)
-
-    def build(self,input_shape):
-        self.W = self.add_weight(name='w',shape=(self.v_dim, self.v_dim),
-                                      initializer='glorot_uniform',
-                                      regularizer=self.kernel_regularizer,
-                                  trainable=True)     
-                                
-        super(Similarity, self).build(input_shape)
-
-    def call(self, data, mask=None):
-        v1 = data[0]
-        v2 = data[1]
-        sim = K.dot(v1,self.W)
-        sim = K.batch_dot(sim,v2,axes=1)
-        return sim
-
-    def compute_output_shape(self, input_shape):
-        return (input_shape[0][0],1)
