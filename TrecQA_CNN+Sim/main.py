@@ -1,3 +1,6 @@
+# --**deeplean-ai.com**--
+# --**dl-lab**--
+
 #import numpy as np
 
 import model_sim as model
