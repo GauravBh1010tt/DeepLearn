@@ -1,3 +1,6 @@
+# --**deeplean-ai.com**--
+# --**dl-lab**--
+
 import string
 
 from nltk.corpus import words
