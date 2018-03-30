@@ -1,6 +1,5 @@
 # TrecQA - CNN+Sim
-### This is the implementation of [Convolutional Neural Tensor Network Architecture
-for Community-based Question Answering](https://www.ijcai.org/Proceedings/15/Papers/188.pdf). The deep model used is CNN with tensor parameters:
+### This is the implementation of [Convolutional Neural Tensor Network Architecture for Community-based Question Answering](https://www.ijcai.org/Proceedings/15/Papers/188.pdf). The deep model used is CNN with tensor parameters:
 ![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/TrecQA_CNN%2BSim/cnn_sim.JPG)
 
 # Dependencies
