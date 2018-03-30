@@ -1,4 +1,8 @@
-# -*- coding: utf-8 -*-
+"""
+** deeplean-ai.com **
+** dl-lab **
+created by :: GauravBh1010tt
+"""
 
 from keras.models import Model
 from keras.layers.core import Dense, Reshape, Permute
