@@ -17,7 +17,6 @@ embedding_dim = 300
 LSTM_neurons = 50
 dimx = 30
 dimy = 30
-lamda = 0.01
 vocab_size = 8000
 batch_size = 32
 epochs = 3
@@ -33,13 +32,12 @@ data_l, data_r, embedding_matrix = dl.process_data(sent1, sent2,
 X_train_l,X_test_l,X_dev_l,X_train_r,X_test_r,X_dev_r = dl.prepare_train_test(data_l,data_r,
                                                                               train_len,test_len)        
    
-print 'built model....'
+print '\n', model_name,'model built \n'
     
 lrmodel = lrmodel(dimx = dimx, dimy = dimy, embedding_matrix=embedding_matrix, 
                    LSTM_neurons = LSTM_neurons)
-st,end = 0,train_len
-lrmodel.fit([X_train_l[st:end],X_train_r[st:end]],
-                train_score[st:end],                 
+lrmodel.fit([X_train_l,X_train_r],
+                train_score,                 
                  nb_epoch=epochs,
                  batch_size=batch_size,verbose=1)
 
