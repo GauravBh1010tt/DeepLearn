@@ -8,6 +8,8 @@ from __future__ import division
 
 from operator import itemgetter
 from collections import defaultdict
+import scipy.stats as measures
+import numpy as np
 
 ###################### CALCULATING MRR [RETURNS MRR VALUE] ######################
 
@@ -121,3 +123,15 @@ def eval_metric(lrmodel, X_test_l, X_test_r, res_fname,pred_fname,use_softmax=Tr
     #print 'MAP:', map_val
     #print 'MRR:', mrr_val
     return map_val, mrr_val
+
+def eval_sick(model,X_test_l,X_test_r,test_score):
+    #r = np.arange(1,6)
+    pred = model.predict([X_test_l,X_test_r])*4+1
+    pred = [i[0] for i in pred]
+    pred = np.array(pred)
+    test_score = np.array(test_score)*4+1
+    sp_coef = measures.spearmanr(pred,test_score)[0]
+    per_coef = measures.pearsonr(pred,test_score)[0]
+    mse_coef = np.mean(np.square(pred-test_score))
+    
+    return sp_coef, per_coef, mse_coef

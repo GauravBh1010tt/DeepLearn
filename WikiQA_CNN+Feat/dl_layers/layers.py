@@ -86,3 +86,40 @@ class Similarity(Layer):
 
     def compute_output_shape(self, input_shape):
         return (input_shape[0][0],1)
+    
+class Abs(Layer):
+    def __init__(self, **kwargs):
+        super(Abs, self).__init__(**kwargs)
+    
+    def call(self, x, mask=None):
+        inp1, inp2 = x[0],x[1]
+        return K.abs(inp1-inp2)
+    
+    def get_output_shape_for(self, input_shape):
+        return input_shape
+
+class Exp(Layer):
+    def __init__(self, **kwargs):
+        super(Exp, self).__init__(**kwargs)
+
+    def call(self, x, mask=None):
+        h1 = x[0]
+        h2 = x[1]    
+        dif = K.sum(K.abs(h1-h2),axis=1)  
+        h = K.exp(-dif)
+        #print h.shape
+        h=K.clip(h,1e-7,1.0-1e-7)
+        h = K.reshape(h, (h.shape[0],1))
+        return h
+
+    def compute_output_shape(self, input_shape):
+        #print 'input shape:',input_shape
+        out_shape  = list(input_shape[0])
+        out_shape[-1] = 1
+        #print 'output shape:',out_shape
+        return tuple(out_shape)
+
+def mse(y_true, y_pred):
+    #print y_true.shape.eval(),y_pred.shape.eval()
+    y_true=K.clip(y_true,1e-7,1.0-1e-7)    
+    return K.mean(K.square(y_pred - y_true), axis=-1)

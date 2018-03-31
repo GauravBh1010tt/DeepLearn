@@ -124,6 +124,7 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
             try:
                 embedding_matrix[i] = wordVec_model[j]
             except:
+                #print j
                 unk.append(j)
                 continue
         print 'number of unkown words: ',len(unk)
@@ -140,16 +141,17 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     else:
         return X_data
 
-class Abs(Layer):
-    def __init__(self, **kwargs):
-        super(Abs, self).__init__(**kwargs)
+def prepare_train_test(data_l,data_r,train_len,test_len):
     
-    def call(self, x, mask=None):
-        inp1, inp2 = x[0],x[1]
-        return K.abs(inp1-inp2)
+    X_train_l = data_l[:train_len]
+    X_test_l = data_l[train_len:(test_len + train_len)]
+    X_dev_l = data_l[(test_len + train_len):]
     
-    def get_output_shape_for(self, input_shape):
-        return input_shape
+    X_train_r = data_r[:train_len]
+    X_test_r = data_r[train_len:(test_len + train_len)]
+    X_dev_r = data_r[(test_len + train_len):]
+    
+    return X_train_l,X_test_l,X_dev_l,X_train_r,X_test_r,X_dev_r
 
 def word2vec_embedding_layer(embedding_matrix,train=False):
     layer = Embedding(input_dim=embedding_matrix.shape[0], output_dim=embedding_matrix.shape[1], weights=[embedding_matrix],trainable=train)
@@ -167,3 +169,16 @@ def loadGloveModel(glovefile):
     print 'Loaded Word2Vec GloVe Model.....'
     print len(model), ' words loaded.....'
     return model
+
+def encode_labels(labels, nclass=5):
+    """
+    Label encoding from Tree LSTM paper (Tai, Socher, Manning)
+    """
+    Y = np.zeros((len(labels), nclass)).astype('float32')
+    for j, y in enumerate(labels):
+        for i in range(nclass):
+            if i+1 == np.floor(y) + 1:
+                Y[j,i] = y - np.floor(y)
+            if i+1 == np.floor(y):
+                Y[j,i] = np.floor(y) - y + 1
+    return Y
