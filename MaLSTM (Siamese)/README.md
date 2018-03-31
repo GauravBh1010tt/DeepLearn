@@ -36,10 +36,11 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 >>> batch_size = 32
 >>> epochs = 3
 ```
-For evaluating the performance of the model I will use TrecQA dataset. The reason I am using this dataset is the dataset mentioned in the paper is not publically available. This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
+For evaluating the performance of the model I will use SICK dataset (sentence textual similarity). This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
 
 ```python
->>> sent1, sent2, train_len, test_len, train_score, test_score, wordVec_model, pred_fname = sick.load_sick(model_name, wordVec)
+>>> sent1, sent2, train_len, test_len, train_score, test_score, wordVec_model,\
+                                                                 pred_fname = sick.load_sick(model_name, wordVec)
             
 >>> data_l , data_r, embedding_matrix = dl.process_data(sent1, sent2,
                                                  wordVec_model,dimx=dimx,
@@ -50,7 +51,7 @@ For evaluating the performance of the model I will use TrecQA dataset. The reaso
                                                                            train_len,test_len)
 ```
 
-The **CNN model with tensor parameters** can be trained as:
+The **MaLSTM model with mahattan scoring parameters** can be trained as:
 ```python
 >>> lrmodel = lrmodel(dimx = dimx, dimy = dimy, embedding_matrix=embedding_matrix, 
                       LSTM_neurons = LSTM_neurons)
