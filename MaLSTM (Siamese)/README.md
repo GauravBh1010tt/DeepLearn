@@ -1,6 +1,6 @@
 # Manhattan Siamese LSTM
 ### This is the implementation of [Siamese Recurrent Architectures for Learning Sentence Similarity](http://www.mit.edu/~jonasm/info/MuellerThyagarajan_AAAI16.pdf). The deep model used is LSTM with manhattan scoring parameters:
-![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/convolution%20neural%20tensor%20network/cnn_ntn.PNG)
+![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/MaLSTM%20(Siamese)/malstm.JPG)
 
 # Dependencies
 #### The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
@@ -13,22 +13,22 @@ $ pip install -r requirements.txt
 The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
 
 ```python
+>>> import model_Siam_LSTM as model
+>>> from dl_text.metrics import eval_sick
 >>> from dl_text import dl
->>> import model_cntn as model
->>> import trec_utils as trec
->>> from dl_text.metrics import eval_metric
+>>> import sick_utils as sick
 
 >>> glove_fname = 'path to word_vector file/glove.6B.50d.txt'
 
 ############################ DEFINING MODEL ############################
 
->>> lrmodel = model.cntn 
+>>> lrmodel = model.S_LSTM
 >>> model_name = lrmodel.func_name
 
 ################### DEFINING HYPERPARAMETERS ###################
 
->>> dimx = 50 # number of words in question
->>> dimy = 50 # number of words in answer
+>>> dimx = 50 # number of words in sentence 1
+>>> dimy = 50 # number of words in sentence 2 
 >>> batch_size = 50
 >>> vocab_size = 8000
 >>> embedding_dim = 50
