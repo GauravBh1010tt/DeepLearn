@@ -23,11 +23,8 @@ Welcome to DeepLearn. This repository contains implementation of following resea
 [10] [*Construction of a Semi-Automated model for FAQ Retrieval via Short Message Service*](http://dl.acm.org/citation.cfm?doid=2838706.2838717). NLP, IR, ML. [code](http://github.com/GauravBh1010tt/Auto-correction-for-transliterated-queries/tree/master/bi-gram%20markov%20model)
 
 ### Dependencies:
-Install the following packages for using the project:
+The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
 
-    pip install nltk
-    pip install keras
-    pip install tensorflow
-    pip install theano
-    pip install h5py
-    pip install sklearn
+```python
+$ pip install -r requirements.txt
+```
