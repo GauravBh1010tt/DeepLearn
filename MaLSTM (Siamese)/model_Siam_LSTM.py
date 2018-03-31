@@ -32,9 +32,9 @@ def S_LSTM(dimx = 30, dimy = 30, embedding_matrix=None, LSTM_neurons = 32):
     h1,h2=hx,hy
 
     corr1 = Exp()([h1,h2])
-    #adadelta = optimizers.Adadelta()
+    adadelta = optimizers.Adadelta()
     
     model = Model( [inpx,inpy],corr1)
-    model.compile( loss='binary_crossentropy',optimizer='adam')
+    model.compile( loss='binary_crossentropy',optimizer=adadelta)
     
     return model
