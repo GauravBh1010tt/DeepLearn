@@ -1,6 +1,7 @@
 # Manhattan Siamese LSTM
-### This is the implementation of [Siamese Recurrent Architectures for Learning Sentence Similarity](http://www.mit.edu/~jonasm/info/MuellerThyagarajan_AAAI16.pdf). The deep model used is LSTM with manhattan scoring parameters:
-![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/MaLSTM%20(Siamese)/malstm.JPG)
+### This is the implementation of [Siamese Recurrent Architectures for Learning Sentence Similarity](http://www.mit.edu/~jonasm/info/MuellerThyagarajan_AAAI16.pdf). 
+The deep model used is LSTM with manhattan scoring parameters:
+<img src="https://github.com/GauravBh1010tt/DeepLearn/blob/master/MaLSTM%20(Siamese)/malstm.JPG" width="438">
 
 # Dependencies
 #### The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
