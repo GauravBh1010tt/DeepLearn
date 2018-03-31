@@ -19,7 +19,7 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 >>> from dl_text import dl
 >>> import sick_utils as sick
 
->>> glove_fname = 'path to word_vector file/glove.6B.50d.txt'
+>> wordVec = 'path_to_Word2Vec(300 dim)/GoogleNews-vectors-negative300.bin.gz'
 
 ############################ DEFINING MODEL ############################
 
@@ -28,24 +28,20 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 
 ################### DEFINING HYPERPARAMETERS ###################
 
->>> dimx = 50 # number of words in sentence 1
->>> dimy = 50 # number of words in sentence 2 
->>> batch_size = 50
+>>> dimx = 30 # number of words in sentence 1
+>>> dimy = 30 # number of words in sentence 2 
+>>> embedding_dim = 300
+>>> LSTM_neurons = 50
 >>> vocab_size = 8000
->>> embedding_dim = 50
->>> nb_filter = 120
->>> filter_length = (50,4)
->>> depth = 1
->>> nb_epoch = 3
->>> num_tensor_slices = 4
+>>> batch_size = 32
+>>> epochs = 3
 ```
 For evaluating the performance of the model I will use TrecQA dataset. The reason I am using this dataset is the dataset mentioned in the paper is not publically available. This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
 
 ```python
->>> ques, ans, label_train, train_len, test_len, wordVec_model, \
-        res_fname, pred_fname, feat_train, feat_test = trec.load_trec(model_name, glove_fname)
+>>> sent1, sent2, train_len, test_len, train_score, test_score, wordVec_model, pred_fname = sick.load_sick(model_name, wordVec)
             
->>> data_l , data_r, embedding_matrix = dl.process_data(ques, ans,
+>>> data_l , data_r, embedding_matrix = dl.process_data(sent1, sent2,
                                                  wordVec_model,dimx=dimx,
                                                  dimy=dimy,vocab_size=vocab_size,
                                                  embedding_dim=embedding_dim)
@@ -56,13 +52,13 @@ For evaluating the performance of the model I will use TrecQA dataset. The reaso
 
 The **CNN model with tensor parameters** can be trained as:
 ```python
->>> lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, nb_filter = nb_filter, 
-                      num_slices = num_tensor_slices, embedding_dim = embedding_dim, 
-                      filter_length = filter_length, vocab_size = vocab_size, depth = depth)
-    
->>> lrmodel.fit([X_train_l, X_train_r],
-                label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
->>> map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname)
->>> print 'MAP : ',map_val,' MRR : ',mrr_val
-MAP :  0.643286925881  MRR :  70.4599673203
+>>> lrmodel = lrmodel(dimx = dimx, dimy = dimy, embedding_matrix=embedding_matrix, 
+                      LSTM_neurons = LSTM_neurons)
+>>> lrmodel.fit([X_train_l,X_train_r], train_score, nb_epoch=epochs, batch_size=batch_size, verbose=2)
+
+>>> sp_coef, per_coef, mse = eval_sick(lrmodel, X_test_l, X_test_r, test_score)
+>>> print 'spearman coef :',sp_coef, ' \n pearson coef :',per_coef, ' \n mse :',mse
+spearman coef : 0.747002297032
+pearson coef : 0.817191946996
+mse : 0.375428835647
 ```
