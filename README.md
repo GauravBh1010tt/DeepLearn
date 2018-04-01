@@ -2,7 +2,7 @@
 
 Welcome to DeepLearn. This repository contains implementation of following research papers on NLP, CV, ML, and deep learning. Visit my blog for more details - [Deeplearn](http://deeplearn-ai.com/deeplearn/)
 
-[1] [*Correlation Neural Networks*](http://arxiv.org/pdf/1504.07225.pdf). CV, transfer learning, representation learninng.  [blog-post](http://deeplearn-ai.com/2017/05/24/common-representation-learning-using-deep-corrnet/) || [code](http://github.com/GauravBh1010tt/DeepLearn/tree/master/corrnet)
+[1] [*Correlation Neural Networks*](http://arxiv.org/pdf/1504.07225.pdf). CV, transfer learning, representation learninng.  [blog-post](http://deeplearn-ai.com/2017/05/24/common-representation-learning-using-deep-corrnet/) || [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/CorrNet)
 
 [2] [*Reasoning With Neural Tensor Networks for Knowledge Base Completion*](http://nlp.stanford.edu/pubs/SocherChenManningNg_NIPS2013.pdf). NLP, ML. [blog-post](http://deeplearn-ai.com/2017/11/21/neural-tensor-network-exploring-relations-among-text-entities/) || [code](http://github.com/GauravBh1010tt/DeepLearn/tree/master/neural%20tensor%20network)
 
