@@ -12,7 +12,7 @@ Welcome to DeepLearn. This repository contains implementation of following resea
 
 [5] [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](http://aclweb.org/anthology/D15-1237). NLP, deep learning, CQA. [code](http://github.com/GauravBh1010tt/DeepLearn/tree/master/WikiQA_CNN%2BFeat)
 
-[6] [Siamese Recurrent Architectures for Learning Sentence Similarity](http://www.mit.edu/~jonasm/info/MuellerThyagarajan_AAAI16.pdf). NLP, sentence similarity, deep learning. [code](http://github.com/GauravBh1010tt/DeepLearn/tree/master/WikiQA_CNN%2BFeat)
+[6] [Siamese Recurrent Architectures for Learning Sentence Similarity](http://www.mit.edu/~jonasm/info/MuellerThyagarajan_AAAI16.pdf). NLP, sentence similarity, deep learning. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/MaLSTM%20(Siamese))
 
 [7] [Convolutional Neural Tensor Network Architecture for Community Question Answering](https://www.ijcai.org/Proceedings/15/Papers/188.pdf). NLP, deep learning, CQA. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/convolution%20neural%20tensor%20network)
 
