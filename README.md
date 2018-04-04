@@ -8,7 +8,7 @@ Welcome to DeepLearn. This repository contains implementation of following resea
 
 [3] [*Common Representation Learning Using Step-based Correlation Multi-Modal CNN*](http://arxiv.org/abs/1711.00003). CV, transfer learning, representation learninng. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/corrMCNN)
 
-[4]  [ABCNN: Attention-Based Convolutional Neural Network for Modeling Sentence Pairs](https://arxiv.org/pdf/1512.05193.pdf). NLP, deep learning, sentence matching. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/Attention_Based_CNN%20(ABCNN)
+[4]  [ABCNN: Attention-Based Convolutional Neural Network for Modeling Sentence Pairs](https://arxiv.org/pdf/1512.05193.pdf). NLP, deep learning, sentence matching. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/Attention_Based_CNN%20(ABCNN))
 
 [5] [Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf). NLP, deep learning, CQA. [code](http://github.com/GauravBh1010tt/DeepLearn/tree/master/TrecQA_CNN%2BSim)
 
