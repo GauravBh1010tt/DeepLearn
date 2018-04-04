@@ -1,7 +1,7 @@
 # Attention Based CNN (ABCNN)
 ### This is the implementation of [ABCNN: Attention-Based Convolutional Neural Network for Modeling Sentence Pairs](https://arxiv.org/pdf/1512.05193.pdf). 
 The deep model used is CNN with attentive convolution and reweighted pooling:
-<img src="https://github.com/GauravBh1010tt/DeepLearn/blob/master/Attention_Based_CNN%20(ABCNN)/abcnn.JPG" width="738">
+<img src="https://github.com/GauravBh1010tt/DeepLearn/blob/master/Attention_recurrent_models/Atten%2BLSTM.JPG" width="738">
 
 # Dependencies
 #### The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
