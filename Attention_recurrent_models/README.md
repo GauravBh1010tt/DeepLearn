@@ -1,6 +1,6 @@
-# Attention Based CNN (ABCNN)
-### This is the implementation of [ABCNN: Attention-Based Convolutional Neural Network for Modeling Sentence Pairs](https://arxiv.org/pdf/1512.05193.pdf). 
-The deep model used is CNN with attentive convolution and reweighted pooling:
+# Attention in recurrent models
+### This is the implementation of [Teaching Machines to Read and Comprehend](https://arxiv.org/pdf/1506.03340.pdf) and [Improved Representation Learning for Question Answer Matching](http://www.aclweb.org/anthology/P16-1044). 
+The deep model used is LSTM with word level attention:
 <img src="https://github.com/GauravBh1010tt/DeepLearn/blob/master/Attention_recurrent_models/Atten%2BLSTM.JPG" width="738">
 
 # Dependencies
