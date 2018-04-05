@@ -11,8 +11,11 @@ $ pip install -r requirements.txt
 ```
 
 # Usage
-The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
-
+The script to run the codes are given in ```main.py```. For a quick run, go inside single_file folder and run:
+```python
+$ python mainfile.py
+```
+You can also use the Python ```Idle``` to run the modules as follows:
 ```python
 >>> import model_abcnn as model
 >>> from dl_text.metrics import eval_metric
