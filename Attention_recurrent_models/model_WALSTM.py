@@ -46,7 +46,7 @@ def WA_LSTM(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, embedding_dim =
             ques = Bidirectional(LSTM(LSTM_neurons,return_sequences=True),merge_mode='concat')(x)
             ans = Bidirectional(LSTM(LSTM_neurons,return_sequences=True),merge_mode='concat')(y)
             
-###################     word - level attention       #########################
+##############     word - level attention       #########################
         
         if word_level:
             q_vec = TimeDistributed(Dense(1))(ques)
@@ -61,8 +61,8 @@ def WA_LSTM(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, embedding_dim =
         s = TimeDistributed(Dense(1,activation='softmax'))(m)
         ans_f = Merge(mode='mul')([ans,s])
         
-        #ques = Dropout(0.5)(ques)
-        #ans = Dropout(0.5)(ans)
+        ques = Dropout(0.5)(ques)
+        ans = Dropout(0.5)(ans)
         channel_1.append(GlobalMaxPooling1D()(ques))
         channel_2.append(GlobalMaxPooling1D()(ans_f))
         
