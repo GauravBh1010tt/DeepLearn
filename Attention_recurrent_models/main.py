@@ -24,7 +24,7 @@ dimft = 44
 batch_size = 70
 vocab_size = 8000
 embedding_dim = 50
-Lstm_neurons = 64
+LSTM_neurons = 64
 depth = 1
 nb_epoch = 3
 shared = 1
@@ -40,7 +40,7 @@ data_l , data_r, embedding_matrix = dl.process_data(ques, ans,
 X_train_l,X_test_l,X_dev_l,X_train_r,X_test_r,X_dev_r = wk.prepare_train_test(data_l,data_r,
                                                                            train_len,test_len)
 
-lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, LSTM_neurons = Lstm_neurons, embedding_dim = embedding_dim, 
+lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, LSTM_neurons = LSTM_neurons, embedding_dim = embedding_dim, 
                       depth = depth, shared = shared,opt_params = opt_params)
     
 print '\n', model_name,'model built \n'
