@@ -12,7 +12,7 @@ Welcome to DeepLearn. This repository contains implementation of following resea
 
 [5] [Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.723.6492&rep=rep1&type=pdf). NLP, deep learning, CQA. [code](http://github.com/GauravBh1010tt/DeepLearn/tree/master/TrecQA_CNN%2BSim)
 
-[6] [Attentive Recurrent Tensor Model for Community Question Answering](https://arxiv.org/abs/1801.06792). NLP, IR, deep learning. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/fake%20news%20challenge%20(FNC-1))
+[6] [Combining Neural, Statistical and External Features for Fake News Stance Identification](http://deeplearn-ai.com/wp-content/uploads/2018/03/www-final.pdf). NLP, IR, deep learning. [code](https://github.com/GauravBh1010tt/DeepLearn/tree/master/fake%20news%20challenge%20(FNC-1))
 
 [7] [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](http://aclweb.org/anthology/D15-1237). NLP, deep learning, CQA. [code](http://github.com/GauravBh1010tt/DeepLearn/tree/master/WikiQA_CNN%2BFeat)
 
