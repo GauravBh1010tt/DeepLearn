@@ -11,8 +11,11 @@ $ pip install -r requirements.txt
 ```
 
 # Usage
-The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
-
+The script to run the codes are given in ```main.py```. For a quick run, download all contents in a single folder and run:
+```python
+$ python main.py
+```
+You can also use the Python ```Idle``` to run the modules as follows:
 ```python
 >>> import model_Siam_LSTM as model
 >>> from dl_text.metrics import eval_sick
