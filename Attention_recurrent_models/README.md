@@ -19,7 +19,7 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 >>> from dl_text import dl
 >>> import wiki_utils as wk
 
->> wordVec = 'path_to_Word2Vec(300 dim)/GoogleNews-vectors-negative300.bin.gz'
+>> wordVec = 'path_to_GloVe(50 dim)'
 
 ############################ DEFINING MODEL ############################
 
