@@ -14,7 +14,7 @@ $ pip install -r requirements.txt
 The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
 
 ```python
->>> import model_abcnn as model
+>>> import model_WALSTM as model
 >>> from dl_text.metrics import eval_metric
 >>> from dl_text import dl
 >>> import wiki_utils as wk
@@ -23,7 +23,7 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 
 ############################ DEFINING MODEL ############################
 
->>> lrmodel = model.bcnn # bcnn for basic cnn, abcnn for attentive cnn
+>>> lrmodel = model.WA_LSTM # word-level attentive LSTM
 >>> model_name = lrmodel.func_name
 
 ################### DEFINING HYPERPARAMETERS ###################
@@ -31,14 +31,13 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 >>> dimx = 50 # number of words in sentence 1
 >>> dimy = 50 # number of words in sentence 2 
 >>> embedding_dim = 50
->>> nb_filter = 120
->>> filter_length = (50,4)
+>>> LSTM_neurons = 100
 >>> depth = 1
 >>> nb_epoch = 3
->>> shared = 0
+>>> shared = 1
 >>> opt_params = [0.001,'adam']
 ```
-For evaluating the performance of the model I will use SICK dataset (sentence textual similarity). This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
+For evaluating the performance of the model I will use WikiQA dataset (answer sentence selection). This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
 
 ```python
 >>> ques, ans, label_train, train_len, test_len,\
@@ -52,28 +51,14 @@ For evaluating the performance of the model I will use SICK dataset (sentence te
                                                                            train_len,test_len)
 
 ```
-For basic CNN (**BCNN**) model, train the architecture as:
+Train the **WALSTM** model (word-level attentive LSTM) as:
 ```python
->>> lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, nb_filter = nb_filter, embedding_dim = embedding_dim, 
-                      filter_length = filter_length, depth = depth, shared = shared,
-                      opt_params = opt_params)
+>>> lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, embedding_dim = embedding_dim, 
+                      depth = depth, shared = shared,LSTM_neurons=LSTM_neurons, opt_params = opt_params)
     
 >>> print '\n', model_name,'model built \n'
 >>> lrmodel.fit([X_train_l, X_train_r],label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
 >>> map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname)
 >>> print 'MAP : ',map_val,' MRR : ',mrr_val
-MAP : 64.23 MRR : 66.74
+MAP : 63.35 MRR : 64.89
 ```
-
-For attentive CNN (**ABCNN**) model, train the architecture as:
-```python
->>> lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, nb_filter = nb_filter, embedding_dim = embedding_dim, 
-                      filter_length = filter_length, depth = depth, shared = shared,
-                      opt_params = opt_params)
-    
- >>> print '\n',model_name,'model built \n'
- >>> lrmodel.fit([X_train_l, X_train_r],label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
- >>> map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname)
- >>> print 'MAP : ',map_val,' MRR : ',mrr_val
- MAP : 66.78 MRR : 67.34
- ```
