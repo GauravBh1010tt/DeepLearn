@@ -4,7 +4,7 @@
 created by :: GauravBh1010tt
 """
 
-import model_abcnn as model
+import model_WALSTM as model
 import wiki_utils as wk
 from dl_text.metrics import eval_metric
 from dl_text import dl
@@ -13,13 +13,13 @@ glove_fname = 'D:/workspace/NLP/data/Glove/glove.6B.50d.txt'
 
 ################### DEFINING MODEL AND PREDICTION FILE ###################
 
-lrmodel = model.abcnn
+lrmodel = model.WA_LSTM
 model_name = lrmodel.func_name
 
 ################### DEFINING HYPERPARAMETERS ###################
 
-dimx = 40
-dimy = 60
+dimx = 50
+dimy = 50
 dimft = 44
 batch_size = 70
 vocab_size = 8000
@@ -28,7 +28,7 @@ nb_filter = 120
 filter_length = (50,4)
 depth = 1
 nb_epoch = 3
-shared = 0
+shared = 1
 opt_params = [0.001,'adam']
     
 ques, ans, label_train, train_len, test_len,\
