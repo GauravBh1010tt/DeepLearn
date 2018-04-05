@@ -1,6 +1,6 @@
 # Convolution neural tensor network
 ### This is the implementation of [Convolutional Neural Tensor Network Architecture for Community-based Question Answering](https://www.ijcai.org/Proceedings/15/Papers/188.pdf). The deep model used is CNN with tensor parameters:
-![models](https://github.com/GauravBh1010tt/DeepLearn/blob/master/convolution%20neural%20tensor%20network/cnn_ntn.PNG)
+<img src="https://github.com/GauravBh1010tt/DeepLearn/blob/master/convolution%20neural%20tensor%20network/cnn_ntn.PNG" width="800">
 
 # Dependencies
 #### The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
@@ -10,8 +10,11 @@ $ pip install -r requirements.txt
 ```
 
 # Usage
-The script to run the codes are given in ```main.py```. You can also use the Python ```Idle``` to run the modules.
-
+The script to run the codes are given in ```main.py```. For a quick run, download all contents in a single folder and run:
+```python
+$ python main.py
+```
+You can also use the Python ```Idle``` to run the modules as follows:
 ```python
 >>> from dl_text import dl
 >>> import model_cntn as model
