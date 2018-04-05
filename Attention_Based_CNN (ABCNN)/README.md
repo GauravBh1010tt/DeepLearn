@@ -11,7 +11,7 @@ $ pip install -r requirements.txt
 ```
 
 # Usage
-The script to run the codes are given in ```main.py```. For a quick run, go inside single_file folder and run:
+The script to run the codes are given in ```main.py```. For a quick run, download all contents in a single folder and run:
 ```python
 $ python mainfile.py
 ```
