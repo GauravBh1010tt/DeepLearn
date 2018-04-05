@@ -38,7 +38,7 @@ The script to run the codes are given in ```main.py```. You can also use the Pyt
 >>> shared = 0
 >>> opt_params = [0.001,'adam']
 ```
-For evaluating the performance of the model I will use SICK dataset (sentence textual similarity). This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
+For evaluating the performance of the model I will use WikiQA (answer sentence selection). This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
 
 ```python
 >>> ques, ans, label_train, train_len, test_len,\
