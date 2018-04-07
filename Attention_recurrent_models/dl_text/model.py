@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
 from keras.models import Model
 from keras.layers.core import Dense, Reshape, Permute
 from keras.layers import Input, merge, ZeroPadding2D,GlobalAveragePooling2D,GlobalMaxPooling1D,GlobalAveragePooling1D,ZeroPadding1D,AveragePooling1D, GlobalMaxPooling2D, Dropout, Merge, Conv1D, Lambda, Flatten,  Conv2D, MaxPooling2D, UpSampling2D, Convolution2D
@@ -11,7 +12,7 @@ from dl_text.dl import word2vec_embedding_layer
 def cnn(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, 
         embedding_dim = 50,filter_length = (50,4), vocab_size = 8000, depth = 1):
 
-    print 'Model Uses Basic CNN......'
+    print('Model Uses Basic CNN......')
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')
@@ -73,7 +74,7 @@ def cnn(embedding_matrix, dimx=50, dimy=50, nb_filter = 120,
 def cnn_ft(embedding_matrix, dimx=50, dimy=50, dimft=44, nb_filter = 120, 
         embedding_dim = 50,filter_length = (50,4), vocab_size = 8000, depth = 1):
 
-    print 'Model Uses CNN with Features......'
+    print('Model Uses CNN with Features......')
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')

@@ -1,6 +1,7 @@
 '''
 Evaluation code for the SICK dataset (SemEval 2014 Task 1)
 '''
+from __future__ import print_function
 
 import os
 import numpy as np
@@ -35,26 +36,26 @@ def evaluate(encoder, seed=1234, evaltest=False, loc='F:\\workspace\\project\\Si
     """
     Run experiment
     """
-    print 'Preparing data...'
+    print('Preparing data...')
     train, dev, test, scores = load_data(loc)
     train[0], train[1], scores[0] = shuffle(train[0], train[1], scores[0], random_state=seed)
     
-    print 'Computing training skipthoughts...'
+    print('Computing training skipthoughts...')
     trainA = encoder.encode(train[0], verbose=False, use_eos=True)
     trainB = encoder.encode(train[1], verbose=False, use_eos=True)
     
-    print 'Computing development skipthoughts...'
+    print('Computing development skipthoughts...')
     devA = encoder.encode(dev[0], verbose=False, use_eos=True)
     devB = encoder.encode(dev[1], verbose=False, use_eos=True)
 
-    print 'Computing test skipthoughts...'
+    print('Computing test skipthoughts...')
     testA = encoder.encode(test[0], verbose=False, use_eos=True)
     testB = encoder.encode(test[1], verbose=False, use_eos=True)
 
-    print 'Computing feature combinations...'
+    print('Computing feature combinations...')
     testF = np.c_[np.abs(testA - testB), testA * testB]
 
-    print 'Computing feature combinations...'
+    print('Computing feature combinations...')
     trainF = np.c_[np.abs(trainA - trainB), trainA * trainB]
     #devF = np.c_[np.abs(devA - devB), devA * devB]
     
@@ -63,7 +64,7 @@ def evaluate(encoder, seed=1234, evaltest=False, loc='F:\\workspace\\project\\Si
     #trainF = np.c_[trainA, trainB]
     #devF = np.c_[devA, devB]
     
-    print 'Computing external feature ...'
+    print('Computing external feature ...')
     feat_train = np.load('feat_train.npy')
     feat_test = np.load('feat_test.npy')
     
@@ -83,7 +84,7 @@ def evaluate(encoder, seed=1234, evaltest=False, loc='F:\\workspace\\project\\Si
     
     feat_dev = feat1_test
     
-    print 'Encoding labels...'
+    print('Encoding labels...')
     
     trainY = encode_labels(scores[0])
     #devY = encode_labels(scores[1])
@@ -96,25 +97,25 @@ def evaluate(encoder, seed=1234, evaltest=False, loc='F:\\workspace\\project\\Si
     #trainY = to_categorical(np.round(scores[0]),5)
     #devY = to_categorical(np.round(scores[1]),5)
 
-    print 'Compiling model...'
+    print('Compiling model...')
     lrmodel = prepare_model(ninputs=trainF.shape[1],n_feats=feat1_train.shape[1])
 
-    print 'Training...'
+    print('Training...')
     bestlrmodel = train_model(lrmodel, trainF, trainY, devF, devY, scores[2], feat1_train, feat_dev)
     #bestlrmodel = train_model(lrmodel, trainF, trainY, devF, devY, scores[1])
 
     if evaltest:
 
-        print 'Evaluating...'
+        print('Evaluating...')
         r = np.arange(1,6)
         yhat = np.dot(bestlrmodel.predict([testF,feat1_test], verbose=2), r)
         #yhat = np.dot(bestlrmodel.predict_proba(testF, verbose=2), r)
         pr = pearsonr(yhat, scores[2])[0]
         sr = spearmanr(yhat, scores[2])[0]
         se = mse(yhat, scores[2])
-        print 'Test Pearson: ' + str(pr)
-        print 'Test Spearman: ' + str(sr)
-        print 'Test MSE: ' + str(se)
+        print('Test Pearson: ' + str(pr))
+        print('Test Spearman: ' + str(sr))
+        print('Test MSE: ' + str(se))
 
         return yhat
 
@@ -194,7 +195,7 @@ def train_model(lrmodel, X, Y, devX, devY, devscores, feat_train, feat_dev):
         score = pearsonr(yhat, devscores)[0]
         
         if score > best:
-            print score,num
+            print(score,num)
             best = score
             #print type(X)
             bestlrmodel = prepare_model(ninputs=X.shape[1],n_feats=feat_train.shape[1])
@@ -215,7 +216,7 @@ def train_model(lrmodel, X, Y, devX, devY, devscores, feat_train, feat_dev):
     yhat = np.dot(bestlrmodel.predict([devX,feat_dev], verbose=2), r)
     #yhat = np.dot(bestlrmodel.predict_proba(devX, verbose=2), r)
     score = pearsonr(yhat, devscores)[0]
-    print 'Dev Pearson: ' + str(score)
+    print('Dev Pearson: ' + str(score))
     return bestlrmodel
     
 

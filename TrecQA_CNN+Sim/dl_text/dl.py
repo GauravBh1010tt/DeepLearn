@@ -3,6 +3,7 @@
 ** dl-lab **
 created by :: GauravBh1010tt
 """
+from __future__ import print_function
 
 import re
 import numpy as np
@@ -65,7 +66,7 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     
     
     freq = FreqDist(chain(*tokenize_sent))
-    print 'found ',len(freq),' unique words'
+    print('found ',len(freq),' unique words')
     vocab = freq.most_common(vocab_size - 1)
     index_to_word = [x[0] for x in vocab]
     index_to_word.append(unk_token)
@@ -127,8 +128,8 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
                 #print j
                 unk.append(j)
                 continue
-        print 'number of unkown words: ',len(unk)
-        print 'some unknown words ',unk[0:5]
+        print('number of unkown words: ',len(unk))
+        print('some unknown words ',unk[0:5])
     
     
     
@@ -158,7 +159,7 @@ def word2vec_embedding_layer(embedding_matrix,train=False):
     return layer
 
 def loadGloveModel(glovefile):
-    print 'Loading Glove File.....'
+    print('Loading Glove File.....')
     f = open(glovefile)
     model = {}
     for line in f:
@@ -166,8 +167,8 @@ def loadGloveModel(glovefile):
         word = splitline[0]
         embedding = np.array([float(val) for val in splitline[1:]])
         model[word] = embedding
-    print 'Loaded Word2Vec GloVe Model.....'
-    print len(model), ' words loaded.....'
+    print('Loaded Word2Vec GloVe Model.....')
+    print(len(model), ' words loaded.....')
     return model
 
 def encode_labels(labels, nclass=5):

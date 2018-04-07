@@ -3,6 +3,7 @@
 ** dl-lab **
 created by :: GauravBh1010tt
 """
+from __future__ import print_function
 
 import model_abcnn as model
 import wiki_utils as wk
@@ -14,7 +15,7 @@ glove_fname = 'D:/workspace/NLP/data/Glove/glove.6B.50d.txt'
 ################### DEFINING MODEL AND PREDICTION FILE ###################
 
 lrmodel = model.abcnn
-model_name = lrmodel.func_name
+model_name = lrmodel.__name__
 
 ################### DEFINING HYPERPARAMETERS ###################
 
@@ -46,7 +47,7 @@ if model_name == 'abcnn':
                       filter_length = filter_length, depth = depth, shared = shared,
                       opt_params = opt_params)
     
-    print '\n',model_name,'model built \n'
+    print('\n',model_name,'model built \n')
     lrmodel.fit([X_train_l, X_train_r],label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
     map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname)
 
@@ -55,9 +56,9 @@ else:
                       filter_length = filter_length, depth = depth, shared = shared,
                       opt_params = opt_params)
     
-    print '\n', model_name,'model built \n'
+    print('\n', model_name,'model built \n')
     lrmodel.fit([X_train_l, X_train_r],label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
     map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname)
 
 
-print 'MAP : ',map_val,' MRR : ',mrr_val
+print('MAP : ',map_val,' MRR : ',mrr_val)

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import numpy as np
 import pandas as pd
 from keras.utils.np_utils import to_categorical
@@ -261,8 +262,8 @@ def load_data(file_head,file_body):
     body = pd.read_csv(file_body)
     head_array = head.values
     body_array = body.values                    ##########
-    print('number of headlines : ',len(head_array))
-    print('number of news body : ',len(body_array))
+    print(('number of headlines : ',len(head_array)))
+    print(('number of news body : ',len(body_array)))
     labels = head_array[:,2]
     body_id = head_array[:,1]
     dataset_headLines = head_array[:,0]         ##########

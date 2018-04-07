@@ -3,6 +3,7 @@
 ** dl-lab **
 created by :: GauravBh1010tt
 """
+from __future__ import print_function
 
 import numpy as np
 
@@ -16,7 +17,7 @@ glove_fname = 'D:/workspace/Trec_QA-master/data/Glove/glove.6B.50d.txt'
 ################### DEFINING MODEL ###################
 
 lrmodel = model.cnn
-model_name = lrmodel.func_name
+model_name = lrmodel.__name__
 
 ################### DEFINING HYPERPARAMETERS ###################
 
@@ -44,7 +45,7 @@ if model_name == 'cnn_ft':
     lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, dimft=dimft, nb_filter = 120, 
                       embedding_dim = 50, filter_length = (50,4), vocab_size = 8000, depth = 1)
     
-    print '\n',model_name,'model built \n'
+    print('\n',model_name,'model built \n')
     lrmodel.fit([X_train_l, X_train_r,feat_train],label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
     map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname, feat_test=feat_test)
 
@@ -52,9 +53,9 @@ else:
     lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, nb_filter = 120, 
                       embedding_dim = 50, filter_length = (50,4), vocab_size = 8000, depth = 1)
     
-    print '\n', model_name,'model built \n'
+    print('\n', model_name,'model built \n')
     lrmodel.fit([X_train_l, X_train_r],label_train,batch_size=batch_size,nb_epoch=nb_epoch,verbose=2)
     map_val, mrr_val = eval_metric(lrmodel, X_test_l, X_test_r, res_fname, pred_fname)
 
     
-print 'MAP : ',map_val,' MRR : ',mrr_val
+print('MAP : ',map_val,' MRR : ',mrr_val)

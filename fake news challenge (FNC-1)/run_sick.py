@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-print 'started....'
+from __future__ import print_function
+print('started....')
 #import skipthoughts
 #import eval_sick
 import eval_fnc
 import warnings
+from importlib import reload
 
 warnings.simplefilter("ignore")
 
@@ -17,4 +19,3 @@ i=4997
 
 reload(eval_fnc)
 eval_fnc.evaluate(encoder=None, evaltest=False)
-

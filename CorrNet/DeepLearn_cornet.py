@@ -6,6 +6,7 @@ Created on Tue Mar 07 11:48:18 2017
 @author: Gaurav Bhatt
 Email - gauravbhatt.cs.iitr@gmail.com
 """
+from __future__ import print_function
 
 import sys
 import math
@@ -36,7 +37,7 @@ lamda = 0.02
 loss_type = 2 # 1 - l1+l2+l3-L4; 2 - l2+l3-L4; 3 - l1+l2+l3 , 4 - l2+l3
 
 def svm_classifier(train_x, train_y, valid_x, valid_y, test_x, test_y):
-    
+
     clf = svm.LinearSVC()
     #print train_x.shape,train_y.shape
     clf.fit(train_x,train_y)
@@ -47,7 +48,7 @@ def svm_classifier(train_x, train_y, valid_x, valid_y, test_x, test_y):
     return va, ta
 
 def split(train_l,train_r,label,ratio):
-    
+
     total = train_l.shape[0]
     train_samples = int(total*(1-ratio))
     test_samples = total-train_samples
@@ -57,23 +58,23 @@ def split(train_l,train_r,label,ratio):
         tr_l.append(train_l[a,:])
         tr_r.append(train_r[a,:])
         l_tr.append(label[a])
-        
+
     for i in range(test_samples):
         if i not in dat:
             tst_l.append(train_l[i,:])
             tst_r.append(train_r[i,:])
             l_tst.append(label[i])
-            
+
     tr_l = np.array(tr_l)
     tr_r = np.array(tr_r)
     tst_l = np.array(tst_l)
     tst_r = np.array(tst_r)
     l_tr = np.array(l_tr)
     l_tst = np.array(l_tst)
-    
+
     return tr_l,tst_l,tr_r,tst_r,l_tr,l_tst
-    
-    
+
+
 class ZeroPadding(Layer):
     def __init__(self, **kwargs):
         super(ZeroPadding, self).__init__(**kwargs)
@@ -150,30 +151,30 @@ def reconstruct_from_right(model,inp):
     img = pred[1].reshape((28,14))
     axarr[1].imshow(img_inp)
     axarr[0].imshow(img)
-    
+
 def sum_corr(model):
     view1 = np.load("test_v1.npy")
     view2 = np.load("test_v2.npy")
     x = project(model,[view1,np.zeros_like(view1)])
     y = project(model,[np.zeros_like(view2),view2])
-    print "test correlation"
+    print("test correlation")
     corr = 0
     for i in range(0,len(x[0])):
 		x1 = x[:,i] - (np.ones(len(x))*(sum(x[:,i])/len(x)))
 		x2 = y[:,i] - (np.ones(len(y))*(sum(y[:,i])/len(y)))
 		nr = sum(x1 * x2)/(math.sqrt(sum(x1*x1))*math.sqrt(sum(x2*x2)))
 		corr+=nr
-    print corr
- 
+    print(corr)
+
 def transfer(model):
     view1 = np.load("test_v1.npy")
     view2 = np.load("test_v2.npy")
     labels = np.load("test_l.npy")
     view1 = project(model,[view1,np.zeros_like(view1)])
     view2 = project(model,[np.zeros_like(view2),view2])
-    
+
     perp = len(view1)/5
-    print "view1 to view2"
+    print("view1 to view2")
     acc = 0
     for i in range(0,5):
 		test_x = view2[i*perp:(i+1)*perp]
@@ -191,11 +192,11 @@ def transfer(model):
 			train_y2 = labels[(i+1)*perp:len(view1)]
 			train_x = np.concatenate((train_x1,train_x2))
 			train_y = np.concatenate((train_y1,train_y2))
-       
+
 		va, ta = svm_classifier(train_x, train_y, test_x, test_y, test_x, test_y)
 		acc += ta
-    print acc/5
-    print "view2 to view1"
+    print(acc/5)
+    print("view2 to view1")
 
     acc = 0
     for i in range(0,5):
@@ -216,7 +217,7 @@ def transfer(model):
 			train_y = np.concatenate((train_y1,train_y2))
 		va, ta = svm_classifier(train_x, train_y, test_x, test_y, test_x, test_y)
 		acc += ta
-    print acc/5
+    print(acc/5)
 
 def prepare_data():
     data_l = np.load('data_l.npy')
@@ -233,19 +234,19 @@ def buildModel(loss_type,lamda):
     hx = Dense(hdim_deep,activation='sigmoid')(inpx)
     hx = Dense(hdim_deep2, activation='sigmoid',name='hid_l1')(hx)
     hx = Dense(hdim, activation='sigmoid',name='hid_l')(hx)
-    
+
     hy = Dense(hdim_deep,activation='sigmoid')(inpy)
     hy = Dense(hdim_deep2, activation='sigmoid',name='hid_r1')(hy)
     hy = Dense(hdim, activation='sigmoid',name='hid_r')(hy)
 
     #h = Activation("sigmoid")( Merge(mode="sum")([hx,hy]) )
-    h =  Merge(mode="sum")([hx,hy]) 
-    
+    h =  Merge(mode="sum")([hx,hy])
+
     #recx = Dense(hdim_deep,activation='sigmoid')(h)
     recx = Dense(dimx)(h)
     #recy = Dense(hdim_deep,activation='sigmoid')(h)
     recy = Dense(dimy)(h)
-    
+
     branchModel = Model( [inpx,inpy],[recx,recy,h])
 
     #inpx = Input(shape=(dimx,))
@@ -258,7 +259,7 @@ def buildModel(loss_type,lamda):
     [recx3,recy3,h] = branchModel([inpx, inpy])
 
     corr=CorrnetCost(-lamda)([h1,h2])
-    
+
     if loss_type == 1:
         model = Model( [inpx,inpy],[recy1,recx2,recx3,recx1,recy2,recy3,corr])
         model.compile( loss=["mse","mse","mse","mse","mse","mse",corr_loss],optimizer="rmsprop")
@@ -280,30 +281,30 @@ def trainModel(model,data_left,data_right,loss_type,nb_epoch,batch_size):
     X_train_r = data_right
     #y_train = np_utils.to_categorical(y_train, nb_classes)
     #y_test = np_utils.to_categorical(y_test, nb_classes)
-    
+
     data_l = np.load('data_l.npy')
     data_r = np.load('data_r.npy')
     label = np.load('data_label.npy')
     X_train_l, X_test_l, X_train_r, X_test_r,y_train,y_test = split(data_l,data_r,label,ratio=0.01)
-    
-    print 'data split'
+
+    print('data split')
     if loss_type == 1:
-        print 'L_Type: l1+l2+l3-L4   h_dim:',hdim,'  lamda:',lamda
+        print('L_Type: l1+l2+l3-L4   h_dim:',hdim,'  lamda:',lamda)
         model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_l,X_train_r,X_train_r,np.zeros((X_train_l.shape[0],h_loss))],
                   nb_epoch=nb_epoch,
                   batch_size=batch_size,verbose=0)
     elif loss_type == 2:
-        print 'L_Type: l2+l3-L4   h_dim:',hdim,'   hdim_deep',hdim_deep,'  lamda:',lamda
+        print('L_Type: l2+l3-L4   h_dim:',hdim,'   hdim_deep',hdim_deep,'  lamda:',lamda)
         model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_r,np.zeros((X_train_l.shape[0],h_loss))],
               nb_epoch=nb_epoch,
               batch_size=batch_size,verbose=0)
     elif loss_type == 3:
-        print 'L_Type: l1+l2+l3   h_dim:',hdim,'  lamda:',lamda
+        print('L_Type: l1+l2+l3   h_dim:',hdim,'  lamda:',lamda)
         model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_l,X_train_r,X_train_r],
               nb_epoch=nb_epoch,
               batch_size=batch_size,verbose=0)
     elif loss_type == 4:
-        print 'L_Type: l2+l3   h_dim:',hdim,'  lamda:',lamda
+        print('L_Type: l2+l3   h_dim:',hdim,'  lamda:',lamda)
         model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_r],
               nb_epoch=nb_epoch,
               batch_size=batch_size,verbose=0)
@@ -317,6 +318,6 @@ def testModel(b_model):
 
 left_view, right_view = prepare_data()
 model,branchModel = buildModel(loss_type=loss_type,lamda=lamda)
-trainModel(model=model, data_left=left_view, data_right = right_view, 
+trainModel(model=model, data_left=left_view, data_right = right_view,
            loss_type=loss_type,nb_epoch=nb_epoch,batch_size=batch_size)
 testModel(branchModel)

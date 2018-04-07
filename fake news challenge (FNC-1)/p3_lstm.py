@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import numpy as np
 import pandas as pd
 from keras.utils.np_utils import to_categorical

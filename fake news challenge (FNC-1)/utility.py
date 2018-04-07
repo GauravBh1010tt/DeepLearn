@@ -5,6 +5,7 @@ Created on Tue Mar 07 11:48:18 2017
 
 @author: Gaurav
 """
+from __future__ import print_function
 
 import math
 import random
@@ -85,7 +86,7 @@ def sum_corr(view1,view2,flag=''):
     corr = 0
     for i,j in zip(view1,view2):
         corr += measures.pearsonr(i,j)[0]
-    print('avg sum corr ::',flag,'::',corr/len(view1))
+    print(('avg sum corr ::',flag,'::',corr/len(view1)))
 
 def cal_sim(model,ind1,ind2=1999):
     view1 = np.load("test_v1.npy")[0:ind1]
@@ -119,7 +120,7 @@ def cal_sim(model,ind1,ind2=1999):
         print(AP)
         MAP+=AP
     #print 'accuracy  :- ',float(count)*100/ind1,'%'
-    print('MAP is : ',MAP/ind1)
+    print(('MAP is : ',MAP/ind1))
 
 def cos_sim(ind1,ind2=1999):
     view1 = np.load("test_v1.npy")[0:ind1]
@@ -144,7 +145,7 @@ def cos_sim(ind1,ind2=1999):
         print(t)
         print(AP)
         MAP+=AP
-    print('MAP is : ',MAP/ind1)
+    print(('MAP is : ',MAP/ind1))
 
 class sample:
     def __init__(self):
@@ -164,7 +165,7 @@ class sample:
                                          pattern = '\w+|$[\d\.]+|\S+') for x in sentence]
                         
         freq = nltk.FreqDist(itertools.chain(*self.tokenize_sent))
-        print('found ',len(freq),' unique words')
+        print(('found ',len(freq),' unique words'))
         vocab = freq.most_common(vocab_size - 1)
         self.index_to_word = [x[0] for x in vocab]
         self.index_to_word.append(unk_token)
@@ -233,6 +234,6 @@ class sample:
                 
                 unk.append(j)
                 continue
-        print('number of unkown words: ',len(unk))
-        print('some unknown words ',unk[0:5])
+        print(('number of unkown words: ',len(unk)))
+        print(('some unknown words ',unk[0:5]))
         return X_data,y_data,embedding_matrix

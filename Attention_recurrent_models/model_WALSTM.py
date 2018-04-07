@@ -3,6 +3,7 @@
 ** dl-lab **
 created by :: GauravBh1010tt
 """
+from __future__ import print_function
 
 import keras
 from keras.models import Model
@@ -17,7 +18,7 @@ def WA_LSTM(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, embedding_dim =
                       filter_length = (50,4), depth = 1, shared = 0,LSTM_neurons=64,word_level=1,
                       opt_params = [0.0008,'adam']):
 
-    print 'Model Uses Attenion+LSTM......'
+    print('Model Uses Attenion+LSTM......')
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')

@@ -11,6 +11,11 @@ from collections import defaultdict
 import scipy.stats as measures
 import numpy as np
 
+try:
+    xrange          # Python 2
+except NameError:
+    xrange = range  # Python 3
+
 ###################### CALCULATING MRR [RETURNS MRR VALUE] ######################
 
 def mrr(out, th = 10):
@@ -38,10 +43,10 @@ def map(out, th):
       if candidates[i] == "true":
         num_correct += 1
         precisions.append(num_correct/(i+1))
-    
+
     if precisions:
       avg_prec = sum(precisions)/len(precisions)
-    
+
     MAP += avg_prec
   return MAP / num_queries
 
@@ -53,7 +58,7 @@ def list2dict(lst):
 
     for i in range(len(lst)):
         interm[i+1] = lst[i]
-    
+
     for qid in interm:
         interm[qid] = sorted(interm[qid], key = itemgetter(0), reverse = True)
         val = [rel for score, rel in interm[qid]]
@@ -68,11 +73,11 @@ def list2dict(lst):
 def readfile(pred_fname):
     pred = open(pred_fname).readlines()
     pred = [line.split('\t') for line in pred]
-    
+
     ques = []
     ans = []
     i = 1
-    
+
     while i != len(pred):
         if pred[i][0] == pred[i-1][0]:
             ans.append([float(pred[i-1][-2]), pred[i-1][-1][0:-1]])
@@ -83,7 +88,7 @@ def readfile(pred_fname):
         i += 1
     ans.append([float(pred[i-1][-2]), pred[i-1][-1][0:-1]])
     ques.append(ans)
-    
+
     return ques
 
 ###################### MAP AND MRR FUNCTION [RETURNS MAP AND MRR VALUES] ######################
@@ -94,17 +99,17 @@ def map_mrr(pred_fname, th = 10):
     return map(dic,th), mrr(dic,th)
 
 def eval_metric(lrmodel, X_test_l, X_test_r, res_fname,pred_fname,use_softmax=True, feat_test=None):
-    
+
     if feat_test!=None:
         pred = lrmodel.predict([X_test_l, X_test_r, feat_test])[:,1]
     else:
         pred = lrmodel.predict([X_test_l, X_test_r])[:,1]
 
     ################### SAVING PREDICTIONS ###################
-    
+
     f1 = open(res_fname, 'r').readlines()
     f2 = open(pred_fname,'w')
-    
+
     for j,line in enumerate(f1):
         line = line.split('\t')
         #val = [line[0]+'\t',line[1]+'\t',line[2]+'\t',str(pred[j][0])+'\t',line[-1]]
@@ -113,13 +118,13 @@ def eval_metric(lrmodel, X_test_l, X_test_r, res_fname,pred_fname,use_softmax=Tr
         else:
             val = [line[0]+'\t',line[1]+'\t',line[2]+'\t',str(pred[j][0])+'\t',line[-1]]
         f2.writelines(val)
-    
+
     f2.close()
-    
+
     ################### PRINTING AND SAVING MAP-MRR VALUES ###################
-    
+
     map_val, mrr_val = map_mrr(pred_fname)
-    
+
     #print 'MAP:', map_val
     #print 'MRR:', mrr_val
     return map_val, mrr_val
@@ -133,5 +138,5 @@ def eval_sick(model,X_test_l,X_test_r,test_score):
     sp_coef = measures.spearmanr(pred,test_score)[0]
     per_coef = measures.pearsonr(pred,test_score)[0]
     mse_coef = np.mean(np.square(pred-test_score))
-    
+
     return sp_coef, per_coef, mse_coef

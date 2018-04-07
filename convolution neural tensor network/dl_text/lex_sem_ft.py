@@ -3,6 +3,7 @@
 ** dl-lab **
 created by :: GauravBh1010tt
 """
+from __future__ import print_function
 
 import pandas as pd
 import numpy as np

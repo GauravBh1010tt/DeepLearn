@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
 import utility
 import warnings
 import numpy as np
@@ -308,5 +309,5 @@ for i,j in enumerate(predictions):
 from sklearn.metrics import accuracy_score
 from utils.score import report_score
 score = accuracy_score(string_predicted, test_labels)
-print("Accuracy on test dataset: ",score)
+print(("Accuracy on test dataset: ",score))
 report_score(string_predicted, test_labels)

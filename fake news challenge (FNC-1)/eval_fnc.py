@@ -1,6 +1,7 @@
 '''
 Evaluation code for the SICK dataset (SemEval 2014 Task 1)
 '''
+from __future__ import print_function
 import numpy as np
 import os.path
 from util import *
@@ -34,13 +35,13 @@ def split(train_l,train_r,label,ratio):
         tr_l.append(train_l[a])
         tr_r.append(train_r[a])
         l_tr.append(label[a])
-    print 'splitting - validation samples ',test_samples
+    print('splitting - validation samples ',test_samples)
     for i in range(total):
         if i not in dat:
             tst_l.append(train_l[i])
             tst_r.append(train_r[i])
             l_tst.append(label[i])
-    print 'splitting - train samples ',len(dat)        
+    print('splitting - train samples ',len(dat))        
     tr_l = np.array(tr_l)
     tr_r = np.array(tr_r)
     tst_l = np.array(tst_l)
@@ -154,7 +155,7 @@ def load_dataset(file_trhead, file_trbody, file_tshead, file_tsbody):
     test_new_rdb = []
 
     word_limit = 250    
-    print 'removing stop words and using', word_limit,'words limit .....'
+    print('removing stop words and using', word_limit,'words limit .....')
     
     for i in train_rdb:
         temp=[]
@@ -188,7 +189,7 @@ def evaluate(encoder=None, seed=1234, evaltest=False, loc='./data/'):
     """
     Run experiment
     """
-    print 'Preparing data for fnc...'
+    print('Preparing data for fnc...')
     
     #train, dev, test, scores = load_data(loc)
     #train[0], train[1], scores[0] = shuffle(train[0], train[1], scores[0], random_state=seed)
@@ -207,13 +208,13 @@ def evaluate(encoder=None, seed=1234, evaltest=False, loc='./data/'):
     #train_b = big_mat
     #train_h, dev_h, train_b, dev_b, score_train, dev_score = split(np.array(train_h), train_b, score_train, 0.2)
  
-    print 'loading training skipthoughts...'
+    print('loading training skipthoughts...')
     #trainA = encoder.encode(train_h, verbose=False, use_eos=True)
     #trainB = encoder.encode(train_b, verbose=False, use_eos=True)
     trainA = train_h
     trainB = train_b
     
-    print 'Computing development skipthoughts...'
+    print('Computing development skipthoughts...')
     #devA = encoder.encode(dev_h, verbose=False, use_eos=True)
     #devB = encoder.encode(dev_b, verbose=False, use_eos=True)
 #    devA = dev_h
@@ -222,11 +223,11 @@ def evaluate(encoder=None, seed=1234, evaltest=False, loc='./data/'):
     devB = test_b
     dev_score = score_test
 
-    print 'Computing feature combinations...'
+    print('Computing feature combinations...')
     trainF = np.c_[np.abs(trainA - trainB), trainA * trainB]
     devF = np.c_[np.abs(devA - devB), devA * devB]
 
-    print 'Encoding labels...'
+    print('Encoding labels...')
     #trainY = encode_labels(train_labels)
     #devY = encode_labels(holdout_labels)
     trainY = to_categorical(score_train, 4)
@@ -237,18 +238,18 @@ def evaluate(encoder=None, seed=1234, evaltest=False, loc='./data/'):
 
     train_tfidf, test_tfidf = generate_tfidf()
     
-    print 'Compiling model...'
+    print('Compiling model...')
     lrmodel = prepare_model(ninputs=trainF.shape[1],n_feats=train_Fx.shape[1],n_tfidf=train_tfidf.shape[1])
 
-    print 'Training...'
+    print('Training...')
     bestlrmodel = train_model(lrmodel, trainF, trainY, devF, devY, dev_score, train_Fx, test_Fx, train_tfidf, test_tfidf)
     
     if evaltest:
-        print 'Loading test skipthoughts...'
+        print('Loading test skipthoughts...')
         testA = test_h
         testB = test_b
 
-        print 'Computing feature combinations...'
+        print('Computing feature combinations...')
         testF = np.c_[np.abs(testA - testB), testA * testB]
         
         yhat = bestlrmodel.predict(testF, verbose=2)
@@ -276,7 +277,7 @@ def evaluate(encoder=None, seed=1234, evaltest=False, loc='./data/'):
                 
         report_score(test_stances,string_predicted)
         score = accuracy_score(score_test, yhat)
-        print 'accuracy is ..',score
+        print('accuracy is ..',score)
         #print 'Evaluating...'
 
 
@@ -475,19 +476,19 @@ def train_model(lrmodel, X, Y, devX, devY, devscores, feat_train, feat_dev, trai
                 test_stances.append('discuss')
             if j == 1:
                 test_stances.append('disagree')
-        print 'using new limit value....'
+        print('using new limit value....')
         #score = accuracy_score(devscores, yhat)
         score = report_score(test_stances,string_predicted,val=True)
         #return lrmodel
     
         if score > best:
-            print score
+            print(score)
             best = score
             bestlrmodel = prepare_model(ninputs=X.shape[1],n_feats=feat_train.shape[1],n_tfidf=train_tfidf.shape[1])
             bestlrmodel.set_weights(lrmodel.get_weights())
         else:
             done = True
-            print '***** best model obtained with score',best,'******'
+            print('***** best model obtained with score',best,'******')
 
     yhat = bestlrmodel.predict([devX, feat_dev, test_tfidf], verbose=2)
     yhat = [i.argmax()for i in yhat]

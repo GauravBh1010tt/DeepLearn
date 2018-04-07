@@ -1,3 +1,4 @@
+from __future__ import print_function
 #CorrMCNN: Gaurav Bhatt and Piyush Jha
 # had to degrade numpy to 1.11.0 as 1.13.0 doesn't support float index type in arrays
 
@@ -283,7 +284,7 @@ def trainModel(model,data_left,data_right,loss_type,nb_epoch,batch_size):
     label = np.load('data_label.npy')
     X_train_l, X_test_l, X_train_r, X_test_r,y_train,y_test = split(data_l,data_r,label,ratio=0.01)
     print ('data split')
-    print ('L_Type: l2+l3-L4   h_dim:',hdim,'   hdim_deep',hdim_deep,'  lamda:',lamda)
+    print(('L_Type: l2+l3-L4   h_dim:',hdim,'   hdim_deep',hdim_deep,'  lamda:',lamda))
     model.fit([X_train_l,X_train_r], [X_train_r,X_train_l,X_train_l,X_train_r,
               np.zeros((X_train_l.shape[0],h_loss)),
              np.zeros((X_train_l.shape[0],hdim_deep)),np.zeros((X_train_l.shape[0],hdim_deep2))],

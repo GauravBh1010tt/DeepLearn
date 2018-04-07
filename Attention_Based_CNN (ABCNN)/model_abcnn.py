@@ -3,6 +3,7 @@
 ** dl-lab **
 created by :: GauravBh1010tt
 """
+from __future__ import print_function
 
 import keras
 from keras.models import Model
@@ -19,17 +20,17 @@ def abcnn(embedding_matrix, attention=1, dimx=50, dimy=50, nb_filter = 72,
           filter_widths = [4,3,2], opt_params = [0.0008,'adam']):
 
 #if True:
-    print '\n Model Uses ABCNN architecture ......'
-    print 'attention : ', attention
-    print 'nb_filters :', nb_filter
-    print 'filter_size :', filter_length
-    print 'opt params :',opt_params
+    print('\n Model Uses ABCNN architecture ......')
+    print('attention : ', attention)
+    print('nb_filters :', nb_filter)
+    print('filter_size :', filter_length)
+    print('opt params :',opt_params)
     #print 'dense layer :',dense_neuron,' ',reg1
     if dropout:
-        print 'using dropout'
+        print('using dropout')
     if shared:
-        print 'using shared params'
-    print '\n'
+        print('using shared params')
+    print('\n')
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')
@@ -146,7 +147,7 @@ def bcnn(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, embedding_dim = 50
                       opt_params = [0.0008,'adam']):
 
 #if True:
-    print 'Model Uses BCNN......'
+    print('Model Uses BCNN......')
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')

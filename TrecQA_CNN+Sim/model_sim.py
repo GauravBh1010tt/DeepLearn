@@ -3,6 +3,7 @@
 ** dl-lab **
 created by :: GauravBh1010tt
 """
+from __future__ import print_function
 
 from keras import backend as K
 from keras.models import Model
@@ -17,7 +18,7 @@ from dl_layers.layers import Similarity
 def cnn_sim(embedding_matrix, dimx=50, dimy=50, nb_filter = 120, 
         embedding_dim = 50,filter_length = (50,4), vocab_size = 8000, depth = 1):
 
-    print 'Model Uses CNN with Sim......'
+    print('Model Uses CNN with Sim......')
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')
@@ -83,7 +84,7 @@ def cnn_sim(embedding_matrix, dimx=50, dimy=50, nb_filter = 120,
 def cnn_sim_ft(embedding_matrix, dimx=50, dimy=50, dimft=44, nb_filter = 120, 
         embedding_dim = 50,filter_length = (50,4), vocab_size = 8000, depth = 1):
 
-    print 'Model Uses CNN with Sim and Features......'
+    print('Model Uses CNN with Sim and Features......')
     
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     inpy = Input(shape=(dimy,),dtype='int32',name='inpy')

@@ -1,3 +1,4 @@
+from __future__ import print_function
 #Adapted from https://github.com/FakeNewsChallenge/fnc-1/blob/master/scorer.py
 #Original credit - @bgalbraith
 
