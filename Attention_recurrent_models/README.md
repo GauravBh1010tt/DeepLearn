@@ -17,6 +17,9 @@ $ python main.py
 ```
 You can also use the Python ```Idle``` to run the modules as follows:
 ```python
+>>> import sys
+>>> sys.path.append("..\_deeplearn_utils")
+
 >>> import model_WALSTM as model
 >>> from dl_text.metrics import eval_metric
 >>> from dl_text import dl
