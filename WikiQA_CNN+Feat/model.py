@@ -8,7 +8,7 @@ from keras.models import Model
 from keras.layers.core import Dense, Reshape, Permute
 from keras.layers import Input, merge, ZeroPadding2D,GlobalAveragePooling2D,GlobalMaxPooling1D,GlobalAveragePooling1D,ZeroPadding1D,AveragePooling1D, GlobalMaxPooling2D, Dropout, Merge, Conv1D, Lambda, Flatten,  Conv2D, MaxPooling2D, UpSampling2D, Convolution2D
 
-from dl import word2vec_embedding_layer
+from dl_text.dl import word2vec_embedding_layer
 
 ######################## MODEL USING BASIC CNN ########################
 

@@ -4,12 +4,16 @@
 created by :: GauravBh1010tt
 """
 
+import sys
+sys.path.append("..\_deeplearn_utils")
+
 import model_abcnn as model
 import wiki_utils as wk
 from dl_text.metrics import eval_metric
 from dl_text import dl
 
-glove_fname = 'D:/workspace/NLP/data/Glove/glove.6B.50d.txt'
+
+glove_fname = 'K:/workspace/neural network/Trec_QA-master/glove.6B.50d.txt'
 
 ################### DEFINING MODEL AND PREDICTION FILE ###################
 
@@ -40,6 +44,8 @@ data_l , data_r, embedding_matrix = dl.process_data(ques, ans,
 
 X_train_l,X_test_l,X_dev_l,X_train_r,X_test_r,X_dev_r = wk.prepare_train_test(data_l,data_r,
                                                                            train_len,test_len)
+
+
 
 if model_name == 'abcnn':
     lrmodel = lrmodel(embedding_matrix, dimx=dimx, dimy=dimy, nb_filter = nb_filter, embedding_dim = embedding_dim, 

@@ -3,14 +3,14 @@
 
 #### ESSENTIAL LIBRARIES FOR MAIN FUNCTIONALITY ####
 
-numpy==1.11.0
+numpy
 matplotlib
 pandas
 scikit-learn
 scipy
 h5py
-keras==2.1.5
-theano==0.9.0
+keras
+theano
 nltk
 textstat
 gensim
