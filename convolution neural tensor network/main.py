@@ -4,12 +4,15 @@
 created by :: GauravBh1010tt
 """
 
+import sys
+sys.path.append("..\_deeplearn_utils")
+
 import model_cntn as model
 import trec_utils as trec
 from dl_text.metrics import eval_metric
 from dl_text import dl
 
-glove_fname = 'D:/workspace/NLP/data/Glove/glove.6B.50d.txt'
+glove_fname = 'K:/workspace/neural network/Trec_QA-master/glove.6B.50d.txt'
 
 ################### DEFINING MODEL ###################
 

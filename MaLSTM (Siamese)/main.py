@@ -4,6 +4,9 @@
 created by :: GauravBh1010tt
 """
 
+import sys
+sys.path.append("..\_deeplearn_utils")
+
 import model_Siam_LSTM as model
 from dl_text.metrics import eval_sick
 from dl_text import dl
@@ -22,6 +25,7 @@ batch_size = 32
 epochs = 3
 
 wordVec = 'path_to_Word2Vec(300 dim)/GoogleNews-vectors-negative300.bin.gz'
+wordVec = None
 sent1, sent2, train_len, test_len, train_score, test_score, wordVec_model, pred_fname = sick.load_sick(model_name, wordVec)
 
 data_l, data_r, embedding_matrix = dl.process_data(sent1, sent2,
