@@ -16,6 +16,9 @@ $ python main.py
 ```
 You can also use the Python ```Idle``` to run the modules as follows:
 ```python
+>>> import sys
+>>> sys.path.append("..\_deeplearn_utils")
+
 >>> from dl_text dl
 >>> import model_sim as model
 >>> import trec_utils as trec
