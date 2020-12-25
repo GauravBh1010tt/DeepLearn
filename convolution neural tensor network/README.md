@@ -44,7 +44,7 @@ You can also use the Python ```Idle``` to run the modules as follows:
 >>> nb_epoch = 3
 >>> num_tensor_slices = 4
 ```
-For evaluating the performance of the model I will use TrecQA dataset. The reason I am using this dataset is the dataset mentioned in the paper is not publically available. This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
+For evaluating the performance of the model I will use TrecQA dataset. The reason I am using this dataset is the dataset mentioned in the paper is not publicly available. This dataset can be further processed using **[dl-text](https://github.com/GauravBh1010tt/DL-text)**. Prepare the datasets as:
 
 ```python
 >>> ques, ans, label_train, train_len, test_len, wordVec_model, \
