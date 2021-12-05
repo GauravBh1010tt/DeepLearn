@@ -36,6 +36,8 @@ Welcome to DeepLearn. This repository contains implementation of following resea
 
 [15] [*Construction of a Semi-Automated model for FAQ Retrieval via Short Message Service*](http://dl.acm.org/citation.cfm?doid=2838706.2838717). NLP, IR, ML. [code](http://github.com/GauravBh1010tt/Auto-correction-for-transliterated-queries/tree/master/bi-gram%20markov%20model)
 
+[16] [*Neural Compound-Word (Sandhi) Generation and Splitting in Sanskrit Language*](https://dl.acm.org/doi/10.1145/3430984.3431025). NLP, ML. [code](http://github.com/GauravBh1010tt/DeepLearn/Sandhi_Prakarana)
+
 ### Dependencies:
 The required dependencies are mentioned in requirement.txt. I will also use **[dl-text](https://github.com/GauravBh1010tt/DL-text)** modules for preparing the datasets. If you haven't use it, please do have a quick look at it. 
 
